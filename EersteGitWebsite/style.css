@@ -1,5 +1,23 @@
+* {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
 h1 {
     background-color: green;
     padding: 5px;
     border-radius: 5px;
+    color: white;
+    text-align: center;
+}
+
+footer {
+    background-color: black;
+    color: white;
+    margin-top: auto;
+    width: 100vw;
 }
