@@ -18,7 +18,7 @@
 			<ul id="main-nav-buttons">
 				<li><a href="./index.php">Blogs</a></li>
 				<li><a href="./index.php">About Me</a></li>
-				<li><a href="./account.php">Account</a></li>
+				<li><a href="./login.php">Account</a></li>
 			</ul>
 
 			<!-- Socials -->
@@ -29,45 +29,42 @@
 			</ul>
 		</nav>
         <main>
-            <!-- Login Form -->
-            <div class="login-form">
-                <h2>Login</h2>
-                <form action="account.php" method="post">
+            <!-- Signup Form -->
+            <div class="account-form">
+                <h2>Maak een account</h2>
+                <form action="signup.php" method="post">
+                    <label for="first-name">First Name</label>
+                    <input type="text" id="first-name" name="first-name" required>
+                    
+                    <label for="last-name">Last Name</label>
+                    <input type="text" id="last-name" name="last-name" required>
+                    
+                    <label for="email">Email</label>
+                    <input type="text" id="email" name="email" required>
+
                     <label for="username">Username</label>
                     <input type="text" id="username" name="username" required>
-                    
+
                     <label for="password">Password</label>
                     <input type="password" id="password" name="password" required>
-                    
-                    <input type="submit" name="submit" value="Login">
-                    <?php 
-                    $hash = password_hash("testPass", PASSWORD_DEFAULT);
-                    echo password_verify('testPass', $hash)
-                    ?>
+
+                    <input type="submit" name="submit" value="Sign up">
                 </form>
             </div>
             <?php
-    
-                /* Establishing connection with database */
-                $conn = new mysqli("localhost", "root", "Leerling123", "stagebedrijf");
+                /* Confirming login */
+                $conn = new mysqli("10.2.2.236", "root", "Leerling123", "stagebedrijf");
                 if($conn->connect_error) {die("<p>Connection error: " . $conn->connect_error . "</p>");}
-    
                 if (isset($_POST['submit'])) {
-                    $sqlQuery = "SELECT * FROM tblUsers WHERE Username=\"".$_POST['username']."\" AND PasswordHash=\"".password_hash($_POST['password'])."\";";
-                    echo $sqlQuery;
+                    $firstName = $_POST['first-name'];
+                    $lastName = $_POST['last-name'];
+                    $email = $_POST['email'];
+                    $username = $_POST['username'];
+                    $password = $_POST['password'];
+
+                    $sqlQuery = "INSERT INTO tblUsers (FirstName, LastName, Username, PasswordHash, Email, CreatedAt) VALUES (\"".$firstName."\", \"".$lastName."\", \"".$username."\", \"".password_hash($password, PASSWORD_DEFAULT)."\", \"".$email."\", NOW());";
                     $sqlResult = $conn->query($sqlQuery);
                 }
-    
-    
-                /* Entering data
-                if ($sqlResult->num_rows > 0) {
-                    while ($row = $sqlResult->fetch_assoc()) {
-                        echo "<p>{$row['title']}: {$row['goal']}</p>";
-                    }
-                } else {
-                    echo "<p>Geen data gevonden!</p>";
-                }
-                */
             ?>
         </main>    
     </body>

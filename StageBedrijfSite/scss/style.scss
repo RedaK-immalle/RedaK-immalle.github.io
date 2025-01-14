@@ -15,6 +15,7 @@ body, html {
 }
 
 body {
+  width: 100%;
   display: flex;
   justify-content: center;
 }
@@ -100,10 +101,10 @@ main {
   margin-top: 100px;
 }
 
-.login-form {
-  width: 50%;
-  height: 50%;
-  margin-top: 25vh;
+.account-form {
+  width: 50vw;
+  height: fit-content;
+  margin-top: 7vh;
   margin-left: auto;
   margin-right: auto;
   padding: 20px;
@@ -115,6 +116,7 @@ main {
 
   h2 {
     margin-bottom: 20px;
+    margin-top: 0;
     font-size: 24px;
     text-align: center;
   }
@@ -147,5 +149,9 @@ main {
 
   input[type="submit"]:hover {
     background-color: variables.$secondaryColor;
+  }
+
+  a {
+    margin-top: 5px;
   }
 }

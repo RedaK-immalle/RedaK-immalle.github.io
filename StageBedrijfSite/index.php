@@ -18,7 +18,7 @@
 			<ul id="main-nav-buttons">
 				<li><a href="./index.php">Blogs</a></li>
 				<li><a href="./index.php">About Me</a></li>
-				<li><a href="./account.php">Account</a></li>
+				<li><a href="./login.php">Account</a></li>
 			</ul>
 
 			<!-- Socials -->

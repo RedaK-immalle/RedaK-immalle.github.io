@@ -16,6 +16,7 @@ body, html {
 }
 
 body {
+  width: 100%;
   display: flex;
   justify-content: center;
 }
@@ -92,10 +93,10 @@ main {
   margin-top: 100px;
 }
 
-.login-form {
-  width: 50%;
-  height: 50%;
-  margin-top: 25vh;
+.account-form {
+  width: 50vw;
+  height: fit-content;
+  margin-top: 7vh;
   margin-left: auto;
   margin-right: auto;
   padding: 20px;
@@ -105,25 +106,26 @@ main {
   box-sizing: border-box;
   line-height: 1;
 }
-.login-form h2 {
+.account-form h2 {
   margin-bottom: 20px;
+  margin-top: 0;
   font-size: 24px;
   text-align: center;
 }
-.login-form label {
+.account-form label {
   display: block;
   margin-bottom: 10px;
   font-weight: bold;
 }
-.login-form input[type=text],
-.login-form input[type=password] {
+.account-form input[type=text],
+.account-form input[type=password] {
   width: 100%;
   padding: 10px;
   margin-bottom: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
 }
-.login-form input[type=submit] {
+.account-form input[type=submit] {
   width: 100%;
   padding: 10px;
   background-color: #415a77;
@@ -133,8 +135,11 @@ main {
   font-size: 16px;
   cursor: pointer;
 }
-.login-form input[type=submit]:hover {
+.account-form input[type=submit]:hover {
   background-color: #e0e1dd;
+}
+.account-form a {
+  margin-top: 5px;
 }
 
 /*# sourceMappingURL=style.css.map */
