@@ -11,79 +11,141 @@
 body, html {
     /* Hide the overflow at the left or right side of the page */
     height: 100%;
+    margin: 0;
+}
+
+body {
+  display: flex;
+  justify-content: center;
 }
 
 nav {
-    ul {
-      margin: 0;
-      padding: 0;
-      list-style-type: none;
-      display: inline-flex;
-      justify-content: space-between;
-    }
-  
-    width: 100vw;
-    height: variables.$navHeight;
-    padding-left: 10vw;
-    padding-right: 10vw;
-    background-color: white;
-    display: flex;
-    align-items: center;
+  width: 99vw;
+  height: variables.$navHeight;
+  padding-left: 10vw;
+  padding-right: 10vw;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  box-shadow: 0px 0px 5px gray;
+  border-radius: 5px;
+  margin-top: 10px;
+  /* Stay on top of everything */
+  z-index: 5;
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    display: inline-flex;
     justify-content: space-between;
-    position: fixed;
-    box-shadow: 0px 0px 5px gray;
-    /* Stay on top of everything */
-    z-index: 5;
-  
-    #logo {
-      width: 10%;
-      height: 40px;
-      background-color: variables.$mainColor;
-      color: white;
+  }
+
+
+  #logo {
+    width: 10%;
+    height: 40px;
+    background-color: variables.$mainColor;
+    color: white;
+    font-weight: bolder;
+    font-size: 15px;
+    text-align: center;
+    align-content: center;
+  }
+
+  #main-nav-buttons {
+    width: 30%;
+    min-width: 20%;
+
+    li a {
+      font-size: 20px;
+      text-decoration: none;
+      color: variables.$darkMainColor;
       font-weight: bolder;
-      font-size: 15px;
-      text-align: center;
-      align-content: center;
     }
-  
-    #main-nav-buttons {
-      width: 20%;
-  
-      li a {
-        font-size: 20px;
-        text-decoration: none;
-        color: variables.$darkMainColor;
-        font-weight: bolder;
-      }
-  
-      li a:hover {
-        color: variables.$secondaryColor;
-      }
-    }
-  
-    #social-nav-buttons {
-      width: 10%;
-  
-      li {
-        display: inline;
-        border-radius: 50%;
-        background-color: variables.$lightColor;
-        padding: 10px;
-        width: 36px;
-        height: 36px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-  
-        .social-nav-img {
-          width: 100%;
-          height: 100%;
-        }
-  
-      }
-      li:hover {
-        background-color: variables.$secondaryColor;
-      }
+
+    li a:hover {
+      color: variables.$secondaryColor;
     }
   }
-  
+
+  #social-nav-buttons {
+    width: 10%;
+
+    li {
+      display: inline;
+      border-radius: 50%;
+      background-color: variables.$lightColor;
+      padding: 10px;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .social-nav-img {
+        width: 100%;
+        height: 100%;
+      }
+
+    }
+    li:hover {
+      background-color: variables.$secondaryColor;
+    }
+  }
+}
+
+main {
+  margin-top: 100px;
+}
+
+.login-form {
+  width: 50%;
+  height: 50%;
+  margin-top: 25vh;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  box-sizing: border-box;
+  line-height: 1;
+
+  h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    text-align: center;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+
+  input[type="text"],
+  input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+  input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: variables.$mainColor;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  input[type="submit"]:hover {
+    background-color: variables.$secondaryColor;
+  }
+}

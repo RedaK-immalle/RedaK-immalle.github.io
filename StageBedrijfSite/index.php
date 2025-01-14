@@ -16,9 +16,9 @@
 			<div id="logo">Stage Bedrijf</div>
 			<!-- Main Buttons -->
 			<ul id="main-nav-buttons">
-				<li><a href="./index.php">Home</a></li>
-				<li><a href="./index.php">Contact</a></li>
-				<li><a href="./index.php">About Us</a></li>
+				<li><a href="./index.php">Blogs</a></li>
+				<li><a href="./index.php">About Me</a></li>
+				<li><a href="./account.php">Account</a></li>
 			</ul>
 
 			<!-- Socials -->
@@ -28,5 +28,8 @@
 				<li><img class="social-nav-img" src="Icons/linkedin.png"/></li>
 			</ul>
 		</nav>
+		<main>
+			
+		</main>
     </body>
 </html>
