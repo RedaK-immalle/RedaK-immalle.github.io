@@ -29,34 +29,65 @@
 			</ul>
 		</nav>
         <main>
-            <!-- Login Form -->
-            <div class="account-form">
-                <h2>Login</h2>
-                <form action="login.php" method="post">
-                    <label for="username">Username</label>
-                    <input type="text" id="username" name="username" required>
-                    
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password" required>
-                    
-                    <input type="submit" name="submit" value="Login">
-                    <?php 
-                    $hash = password_hash("testPass", PASSWORD_DEFAULT);
-                    ?>
-                    <a href="./signup.php">Sign Up</a>
-                </form>
-            </div>
             <?php
+            error_reporting(E_ALL);
+            session_start();
+            if(!isset($_SESSION['user_id'])) {
+                echo '
+                <!-- Login Form -->
+                <div class="account-form">
+                    <h2>Login</h2>
+                    <form method="post">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" name="username" required>
+                        
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" required>
+                        
+                        <input type="submit" name="submit" value="Login">
+                        <?php 
+                        $hash = password_hash("testPass", PASSWORD_DEFAULT);
+                        ?>
+                        <a href="./signup.php">Sign Up</a>
+                    </form>
+                </div>
+                ';
                 /* Confirming login */
                 $conn = new mysqli("10.2.2.236", "root", "Leerling123", "stagebedrijf");
                 if($conn->connect_error) {die("<p>Connection error: " . $conn->connect_error . "</p>");}
                 if (isset($_POST['submit'])) {
-                    $sqlQuery = "SELECT PasswordHash FROM tblUsers WHERE Username=\"".$_POST['username']."\";";
-                    $sqlResult = $conn->query($sqlQuery);
-                    $hash = $sqlResult->fetch_assoc()['PasswordHash'];
-
-                    $correctLogin = password_verify($_POST['password'], $hash) == "1" ? true: false;
+                    $stmt = $conn->prepare("SELECT UserID, PasswordHash FROM tblUsers WHERE Username = ?");
+                    $stmt->bind_param("s", $_POST['username']);
+                    $stmt->execute();
+                    $sqlResult = $stmt->get_result();
+                    $row = $sqlResult->fetch_assoc();
+                    $hash = $row['PasswordHash'];
+                    $loggedInUserID = $row['UserID'];
+                    $correctLogin = password_verify($_POST['password'], $hash);
+                    if ($correctLogin == 1) {
+                        $_SESSION['user_id'] = $loggedInUserID;
+                        echo "<script>console.log(\"Logged in User: ".$loggedInUserID."\");</script>";
+                        header('Location: login.php');
+                    } else {
+                        /* Wrong Login */
+                        header("Location: login.php");
+                    }
                 }
+            } else {
+                if(isset($_POST['submit'])) {
+                    echo "<script>console.log(\"Logging Out...\");</script>";
+                    $_SESSION['user_id'] = null;
+                    header('Location: login.php');
+                }
+                echo "<script>console.log(\"User Already Logged In, UserID: ".$_SESSION['user_id']."\");</script>";
+                /* Log Out Button */
+                echo '
+                <form method="post">
+                    <button type="submit" name="submit">Log Out</button>
+                </form>
+                ';
+
+            }
             ?>
         </main>    
     </body>
