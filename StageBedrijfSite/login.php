@@ -45,15 +45,12 @@
                         <input type="password" id="password" name="password" required>
                         
                         <input type="submit" name="submit" value="Login">
-                        <?php 
-                        $hash = password_hash("testPass", PASSWORD_DEFAULT);
-                        ?>
                         <a href="./signup.php">Sign Up</a>
                     </form>
                 </div>
                 ';
                 /* Confirming login */
-                $conn = new mysqli("10.2.2.236", "root", "Leerling123", "stagebedrijf");
+                $conn = new mysqli("10.87.38.212", "root", "Leerling123", "stagebedrijf");
                 if($conn->connect_error) {die("<p>Connection error: " . $conn->connect_error . "</p>");}
                 if (isset($_POST['submit'])) {
                     $stmt = $conn->prepare("SELECT UserID, PasswordHash FROM tblUsers WHERE Username = ?");

@@ -18,6 +18,10 @@ body {
   width: 100%;
   display: flex;
   justify-content: center;
+  background-image: url("Icons/AlldusBackground.jpg");
+  background-size: cover; /* Scales the image to cover the whole background */
+  background-repeat: no-repeat; /* Prevents the image from repeating */
+  background-position: center; /* Centers the image */
 }
 
 nav {
@@ -100,6 +104,44 @@ nav {
 main {
   margin-top: 100px;
   width: 80vw;
+
+  .blog-post {
+    margin: 20px auto;
+    width: 70%;
+    background-color: variables.$lightColor;
+    padding: 10px 20px 0;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+
+    .blog-header {
+      background-color: white;
+      border-radius: 5px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+
+      td {
+      }
+    }
+
+    .blog-title {
+      margin: 0px;
+      margin-left: 5px;
+    }
+
+    .blog-writer {
+      text-align: right;
+      margin: 0px;
+      margin-right: 5px;
+    }
+    .blog-content {
+      margin: 10px 0;
+    }
+  }
 }
 
 .account-form {

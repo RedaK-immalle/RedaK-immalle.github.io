@@ -19,6 +19,10 @@ body {
   width: 100%;
   display: flex;
   justify-content: center;
+  background-image: url("Icons/AlldusBackground.jpg");
+  background-size: cover; /* Scales the image to cover the whole background */
+  background-repeat: no-repeat; /* Prevents the image from repeating */
+  background-position: center; /* Centers the image */
 }
 
 nav {
@@ -92,6 +96,36 @@ nav #social-nav-buttons li:hover {
 main {
   margin-top: 100px;
   width: 80vw;
+}
+main .blog-post {
+  margin: 20px auto;
+  width: 70%;
+  background-color: #b3bfb8;
+  padding: 10px 20px 0;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+}
+main .blog-post .blog-header {
+  background-color: white;
+  border-radius: 5px;
+}
+main .blog-post table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+main .blog-post .blog-title {
+  margin: 0px;
+  margin-left: 5px;
+}
+main .blog-post .blog-writer {
+  text-align: right;
+  margin: 0px;
+  margin-right: 5px;
+}
+main .blog-post .blog-content {
+  margin: 10px 0;
 }
 
 .account-form {
