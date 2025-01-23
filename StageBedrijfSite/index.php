@@ -16,8 +16,8 @@
 			<div id="logo">Stage Bedrijf</div>
 			<!-- Main Buttons -->
 			<ul id="main-nav-buttons">
-				<li><a href="./index.php">Blogs</a></li>
-				<li><a href="./index.php">About Me</a></li>
+				<li><a href="./index.php">Home</a></li>
+				<li><a href="./create-post.php">Post</a></li>
 				<li><a href="./login.php">Account</a></li>
 			</ul>
 
@@ -29,7 +29,7 @@
 			</ul>
 		</nav>
 		<main>
-			<h1 id='titel'>Hallo {Voornaam},</h1>
+			<h1 id='hallo-gebruiker'>Hallo {Voornaam},</h1>
 			<form method="POST" action="index.php">
 				<select name="datums" id="blogDatums" onchange="this.form.submit()">
 					<option value="all" <?php if(!isset($_SESSION['datums'])) {echo " selected";}?>>All</option>
@@ -119,7 +119,7 @@
 
 			if(isset($_SESSION['user_id'])) {
 				echo '<script>
-				let titelTekst = document.getElementById("titel");
+				let titelTekst = document.getElementById("hallo-gebruiker");
 				titelTekst.innerHTML = "Hallo, '.$row['FirstName'].'";
 				</script>';
 			}

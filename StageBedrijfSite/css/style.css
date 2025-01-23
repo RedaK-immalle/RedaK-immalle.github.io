@@ -19,7 +19,6 @@ body {
   width: 100%;
   display: flex;
   justify-content: center;
-  background-image: url("Icons/AlldusBackground.jpg");
   background-size: cover; /* Scales the image to cover the whole background */
   background-repeat: no-repeat; /* Prevents the image from repeating */
   background-position: center; /* Centers the image */
@@ -96,6 +95,14 @@ nav #social-nav-buttons li:hover {
 main {
   margin-top: 100px;
   width: 80vw;
+}
+main .new-post-form form {
+  display: flex;
+  flex-direction: column;
+}
+main .new-post-form form #inhoud {
+  height: 10em;
+  margin-bottom: 10px;
 }
 main .blog-post {
   margin: 20px auto;
