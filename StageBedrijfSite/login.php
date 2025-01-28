@@ -63,7 +63,6 @@
                     $correctLogin = password_verify($_POST['password'], $hash);
                     if ($correctLogin == 1) {
                         $_SESSION['user_id'] = $loggedInUserID;
-                        echo "<script>console.log(\"Logged in User: ".$loggedInUserID."\");</script>";
                         header('Location: login.php');
                     } else {
                         /* Wrong Login */
@@ -71,14 +70,46 @@
                     }
                 }
             } else {
+                $conn = new mysqli("10.87.38.212", "root", "Leerling123", "stagebedrijf");
+                if($conn->connect_error) {die("<p>Connection error: " . $conn->connect_error . "</p>");}
+                $stmt = $conn->prepare("SELECT * FROM tblUsers WHERE UserID = ?");
+                $stmt->bind_param("s", $_SESSION['user_id']);
+                $stmt->execute();
+                $sqlResult = $stmt->get_result();
+                $row = $sqlResult->fetch_assoc();
+
                 if(isset($_POST['submit'])) {
-                    echo "<script>console.log(\"Logging Out...\");</script>";
                     $_SESSION['user_id'] = null;
                     header('Location: login.php');
+                } else if(isset($_POST['update'])) {
+                    if($_POST['password'] != "") {
+                        $stmt = $conn->prepare("UPDATE tblUsers SET FirstName = ?, LastName = ?, Username = ?, PasswordHash = ? WHERE UserID = ?");
+                        $hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
+                        $stmt->bind_param("sssss", $_POST['firstname'], $_POST['lastname'], $_POST['username'], $hash, $_SESSION['user_id']);
+                    } else {
+                        $stmt = $conn->prepare("UPDATE tblUsers SET FirstName = ?, LastName = ?, Username = ? WHERE UserID = ?");
+                        $stmt->bind_param("ssss", $_POST['firstname'], $_POST['lastname'], $_POST['username'], $_SESSION['user_id']);
+                    }
+                    $stmt->execute();
+                    header('Location: login.php');
                 }
-                echo "<script>console.log(\"User Already Logged In, UserID: ".$_SESSION['user_id']."\");</script>";
-                /* Log Out Button */
+                /* Already logged in screen */
                 echo '
+                <form method="post" class="account-form">
+                    <label for="firstname">First Name</label>
+                    <input type="text" id="firstname" name="firstname" value="'.$row['FirstName'].'">
+
+                    <label for="lastname">Last Name</label>
+                    <input type="text" id="lastname" name="lastname" value="'.$row['LastName'].'">
+
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" value="">
+                
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" value="'.$row['Username'].'">
+                    
+                    <button type="submit" name="update">Update Profile</button>
+                </form>
                 <form method="post">
                     <button type="submit" name="submit">Log Out</button>
                 </form>

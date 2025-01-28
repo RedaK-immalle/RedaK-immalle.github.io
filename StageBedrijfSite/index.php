@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="nl">
-    <head>
+	<head>
         <link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Sarala:wght@400;700&display=swap" rel="stylesheet">
-
+		
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Stage bedrijf</title>
         <link rel="stylesheet" type="text/css" href="css/style.css">
     </head>
     <body>
-        <nav>
+		<nav>
 			<!-- Main Logo -->
 			<div id="logo">Stage Bedrijf</div>
 			<!-- Main Buttons -->
@@ -35,6 +35,8 @@
 					<option value="all" <?php if(!isset($_SESSION['datums'])) {echo " selected";}?>>All</option>
 					<!-- Distinct dates for all the blogs made -->
 					<?php
+					error_reporting(E_ALL);
+					session_start();
 					$conn = new mysqli("10.87.38.212", "root", "Leerling123", "stagebedrijf");
 					if($conn->connect_error) {die("<p>Connection error: " . $conn->connect_error . "</p>");}
 					
@@ -105,8 +107,6 @@
 
 			<!-- Customize home screen to logged in user -->
 			<?php
-			error_reporting(E_ALL);
-			session_start();
 			$conn = new mysqli("10.87.38.212", "root", "Leerling123", "stagebedrijf");
 			if($conn->connect_error) {die("<p>Connection error: " . $conn->connect_error . "</p>");}
 
