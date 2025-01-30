@@ -13,7 +13,7 @@
     <body>
         <nav>
 			<!-- Main Logo -->
-			<div id="logo">Stage Bedrijf</div>
+			<a href="index.php" id="logo"><img src="Icons/Alldus-logo.png.webp"></a>
 			<!-- Main Buttons -->
 			<ul id="main-nav-buttons">
 				<li><a href="./index.php">Home</a></li>
@@ -29,6 +29,7 @@
 			</ul>
 		</nav>
         <main>
+            <img style="overflow-y: hidden;" id="background" src="Icons/AlldusBackground.jpg"/>
             <!-- Signup Form -->
             <div class="account-form">
                 <h2>Maak een account</h2>
@@ -53,7 +54,7 @@
             </div>
             <?php
                 /* Confirming login */
-                $conn = new mysqli("10.2.2.236", "root", "Leerling123", "stagebedrijf");
+                $conn = new mysqli("10.30.199.62", "guest", "guestPassword", "stagebedrijf");
                 if($conn->connect_error) {die("<p>Connection error: " . $conn->connect_error . "</p>");}
                 if (isset($_POST['submit'])) {
                     $firstName = $_POST['first-name'];

@@ -13,7 +13,7 @@
     <body>
         <nav>
 			<!-- Main Logo -->
-			<div id="logo">Stage Bedrijf</div>
+			<a href="index.php" id="logo"><img src="Icons/Alldus-logo.png.webp"></a>
 			<!-- Main Buttons -->
 			<ul id="main-nav-buttons">
 				<li><a href="./index.php">Home</a></li>
@@ -29,9 +29,10 @@
 			</ul>
 		</nav>
         <main>
-            <h1>Maak een post</h1>
+        <img style="overflow-y: hidden;" id="background" src="Icons/AlldusBackground.jpg"/>
+        <h1>Maak een post</h1>
             <div class="new-post-form">
-                <form action="create-post.php" method="post">
+                <form action="create-post.php" method="post" class="account-form">
                     <label for="titel">Titel</label>
                     <input type="text" id="titel" name="titel" required>
                     
@@ -47,7 +48,7 @@
                 session_start();
             
                 /* Confirming login */
-                $conn = new mysqli("10.87.38.212", "root", "Leerling123", "stagebedrijf");
+                $conn = new mysqli("10.30.199.62", "guest", "guestPassword", "stagebedrijf");
                 if($conn->connect_error) {die("<p>Connection error: " . $conn->connect_error . "</p>");}
 
                 if(isset($_POST['submit']) && isset($_SESSION['user_id'])) {

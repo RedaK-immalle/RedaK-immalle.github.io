@@ -6,26 +6,33 @@
 }
 
 *, *::before, *::after {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 body, html {
-    /* Hide the overflow at the left or right side of the page */
-    height: 100%;
-    margin: 0;
+  /* Hide the overflow at the left or right side of the page */
+  height: 100%;
+  margin: 0;
+}
+
+::-webkit-scrollbar {
+  width: 0;  /* Remove scrollbar space */
+  background: transparent;  /* Optional: just make scrollbar invisible */
 }
 
 body {
   width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
   // background-image: url("Icons/AlldusBackground.jpg");
   background-size: cover; /* Scales the image to cover the whole background */
   background-repeat: no-repeat; /* Prevents the image from repeating */
   background-position: center; /* Centers the image */
+  overflow-x: hidden;
 }
 
 nav {
-  width: 99vw;
+  width: 97vw;
   height: variables.$navHeight;
   padding-left: 10vw;
   padding-right: 10vw;
@@ -49,14 +56,27 @@ nav {
 
 
   #logo {
+    transition: transform 0.2s ease;
     width: 10%;
     height: 40px;
-    background-color: variables.$mainColor;
+    padding: 10px;
+    background-color: variables.$lightColor;
     color: white;
     font-weight: bolder;
     font-size: 15px;
     text-align: center;
     align-content: center;
+    border-radius: 5px;
+
+    img {
+      width: 100%;
+      position: relative;
+      bottom: 25%;
+    }
+  }
+  #logo:hover {
+    transform: scale(1.03);
+    cursor: pointer;
   }
 
   #main-nav-buttons {
@@ -103,7 +123,25 @@ nav {
 
 main {
   margin-top: 100px;
+  margin-bottom: 100px;
   width: 80vw;
+
+  #background {
+    width: 100vw;
+    height: auto;
+    max-height: 100vh;
+    position: absolute;
+    left: 0vw;
+    top: 0vh;
+    z-index: -1;
+    overflow-x: hidden;
+    mask: linear-gradient(black, black, transparent);
+    backdrop-filter: blur(4px);
+  }
+
+  #front-page {
+    margin-top: 120px;
+  }
 
   .new-post-form form {
     display: flex;
@@ -115,27 +153,46 @@ main {
     }
   }
 
+  .blog-section {
+    position: relative;
+    top: 100vh;
+  }
+
   .blog-post {
+    transition: transform 0.15s ease;
+    position: relative;
+    top: 100vh;
     margin: 20px auto;
     width: 70%;
-    background-color: variables.$lightColor;
+    background-color: variables.$bgColor;
+    border: 2px solid variables.$darkMainColor;
     padding: 10px 20px 0;
     border-radius: 5px;
     display: flex;
     flex-direction: column;
+    box-shadow: 3px 5px 0px variables.$secondaryColor;
+    .openBtn {
+      cursor: pointer;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      left: 0%;
+      top: 0%;
+      opacity: 0;
+    }
 
     .blog-header {
-      background-color: white;
-      border-radius: 5px;
+      background-color: variables.$lightColor;
+      border-radius: 10px;
+      h2 {
+        color: variables.$darkMainColor;
+      }
     }
 
     table {
       width: 100%;
       border-collapse: collapse;
       margin-bottom: 20px;
-
-      td {
-      }
     }
 
     .blog-title {
@@ -152,12 +209,78 @@ main {
       margin: 10px 0;
     }
   }
+  .blog-post:hover {
+    transform: scale(1.01);
+  }
+
+  .expanded-blog-post {
+    width: 70vw;
+    height: 70vh;
+    display: none;
+    position: fixed;
+    z-index: 3;
+    left: 15vw;    
+    top: 15vh;
+    overflow-y: scroll;
+    background-color: variables.$lightColor;
+    padding: 5px 20px;
+    border-radius: 5px;
+    flex-direction: column;
+
+    .ex-blog-title {
+
+    }
+
+    .ex-blog-subtitle {
+
+    }
+
+    .ex-blog-content {
+      width: 100%;
+      height: 60%;
+      border: solid 1px black;
+      border-radius: 3px; 
+      padding: 10px;
+    }
+
+
+    .ex-blog-close-btn {
+      transition: transform 0.15ms ease;
+      cursor: pointer;
+      position: absolute;
+      bottom: 0;
+      margin-bottom: 15px;
+      background-color: variables.$secondaryColor;
+      border: 2px solid darkred;
+      border-radius: 3px;
+      width: 100px;
+      line-height: 1;
+    }
+    .ex-blog-close-btn:hover {
+      background-color: red;
+      transform: scale(1.02);
+    }
+
+    .ex-blog-delete-post-btn {
+      position: absolute;
+      cursor: pointer;
+      bottom: 0;
+      margin-bottom: 15px;
+      right: 0;
+      margin-right: 10px;
+      color: red;
+      background-color: transparent;
+      border: none;
+      text-decoration: underline;
+      font-size: 16px;
+    }
+  }
 }
 
 .account-form {
   width: 50vw;
   height: fit-content;
-  margin-top: 7vh;
+  margin-top: 10px;
   margin-left: auto;
   margin-right: auto;
   padding: 20px;

@@ -13,7 +13,7 @@
     <body>
 		<nav>
 			<!-- Main Logo -->
-			<div id="logo">Stage Bedrijf</div>
+			<a href="index.php" id="logo"><img src="Icons/Alldus-logo.png.webp"></a>
 			<!-- Main Buttons -->
 			<ul id="main-nav-buttons">
 				<li><a href="./index.php">Home</a></li>
@@ -28,16 +28,19 @@
 				<li><img class="social-nav-img" src="Icons/linkedin.png"/></li>
 			</ul>
 		</nav>
-		<main>
-			<h1 id='hallo-gebruiker'>Hallo {Voornaam},</h1>
-			<form method="POST" action="index.php">
+		<main style="margin-top: 0px;">
+			<img id="background" src="Icons/AlldusBackground.jpg"/>
+			<div id="front-page">
+				<h1 id='hallo-gebruiker'>Hallo {Voornaam},</h1>
+			</div>
+			<form method="POST" action="index.php" class="blog-section">
 				<select name="datums" id="blogDatums" onchange="this.form.submit()">
 					<option value="all" <?php if(!isset($_SESSION['datums'])) {echo " selected";}?>>All</option>
 					<!-- Distinct dates for all the blogs made -->
 					<?php
 					error_reporting(E_ALL);
 					session_start();
-					$conn = new mysqli("10.87.38.212", "root", "Leerling123", "stagebedrijf");
+					$conn = new mysqli("10.30.199.62", "guest", "guestPassword", "stagebedrijf");
 					if($conn->connect_error) {die("<p>Connection error: " . $conn->connect_error . "</p>");}
 					
 					$sql = $conn->prepare("SELECT DISTINCT(DATE_FORMAT(CreatedAt, '%M %e')) AS Date FROM tblPosts ORDER BY DATE_FORMAT(CreatedAt, '%M %e') ASC;");
@@ -65,10 +68,11 @@
 
 			<!-- Blog Posts -->
 			<?php
-				$conn = new mysqli("10.87.38.212", "root", "Leerling123", "stagebedrijf");
+				$conn = new mysqli("10.30.199.62", "guest", "guestPassword", "stagebedrijf");
 				if($conn->connect_error) {die("<p>Connection error: " . $conn->connect_error . "</p>");}
-
-				$query = "SELECT CONCAT(tblusers.FirstName, ' ', tblusers.LastName) AS FullName, tblposts.Title, tblposts.Content, DATE_FORMAT(tblposts.CreatedAt, '%M %e') AS CreatedAt FROM tblposts LEFT JOIN tblusers ON tblposts.UserID = tblusers.UserID";
+				
+				
+				$query = "SELECT tblposts.PostID, tblusers.UserID, CONCAT(tblusers.FirstName, ' ', tblusers.LastName) AS FullName, tblposts.Title, tblposts.Content, DATE_FORMAT(tblposts.CreatedAt, '%M %e') AS CreatedAt FROM tblposts LEFT JOIN tblusers ON tblposts.UserID = tblusers.UserID";
 				if (isset($_SESSION['datums'])) {
 					$query .= " WHERE DATE_FORMAT(tblposts.CreatedAt, '%M %e') = ?";
 				}
@@ -77,37 +81,66 @@
 				if (isset($_SESSION['datums'])) {
 					$sql->bind_param("s", $_SESSION['datums']);
 				}
+
+				
 				$sql->execute();
 				$sqlResult = $sql->get_result();
 				if($sqlResult->num_rows > 0) {
 					while($row = $sqlResult->fetch_assoc()) {
 						echo'
-							<div class="blog-post">
-								<table>
-									<tr class="blog-header">
-										<td><h2 class="blog-title">'.$row['Title'].'</h2></td>
-										<td><p class="blog-writer">'.$row['FullName'].'</p></td>
-									</tr>
-									<tr>
-										<td colspan="2"><p class="blog-content">'.$row['Content'].'</p></td>
-									</tr>
-									<tr>
-										<td></td>
-										<td><p class="blog-writer">'.$row['CreatedAt'].'</p></td>
-									</tr>
-								</table>
+						<div class="blog-post">
+							<button class="openBtn" id="btn'.$row['PostID'].'"></button>
+							<table>
+								<tr class="blog-header">
+									<td><h2 class="blog-title">'.$row['Title'].'</h2></td>
+									<td><p class="blog-writer">'.$row['FullName'].'</p></td>
+								</tr>
+								<tr>
+									<td colspan="2"><p class="blog-content">'.$row['Content'].'</p></td>
+								</tr>
+								<tr>
+									<td></td>
+									<td><p class="blog-writer">'.$row['CreatedAt'].'</p></td>
+								</tr>
+							</table>
+						</div>
+						<div class="expanded-blog-post" id="ex'.$row['PostID'].'">
+							<h1 class="ex-blog-title">'.$row['Title'].'</h1>
+							<p class="ex-blog-content">'.$row['Content'].'</p>
+							<h3 class="ex-blog-subtitle">Comments:</h3>
+
+							<div class="comment">
+								<h3>Reda Kadi</h3>
+								<p>Wa een shitpost</p>
 							</div>
-						';
+
+							<!-- Bottom Buttons -->
+							<button class="ex-blog-close-btn" id="btnClose'.$row['PostID'].'"><p>Close</p></button>
+							';
+							if($_SESSION['user_id'] == $row['UserID']) {
+								echo '
+								<form action="index.php" method="post">
+											<input type="submit" name="deletePost'.$row['PostID'].'" value="Delete Post" class="ex-blog-delete-post-btn">
+										</form>';
+								if(isset($_POST['deletePost'.$row['PostID']])) {
+									$query = "DELETE FROM tblposts WHERE PostID = ?";
+									$sql = $conn->prepare($query);
+									$sql->bind_param("s", $row['PostID']);
+									$sql->execute();
+									header("Location: index.php");
+								}
+							}
+						echo '</div>';
 					}
 				}
-			
-			?>
+				
+				?>
 
 
 
 			<!-- Customize home screen to logged in user -->
 			<?php
-			$conn = new mysqli("10.87.38.212", "root", "Leerling123", "stagebedrijf");
+			$conn = new mysqli("10.30.199.62", "guest", "guestPassword", "stagebedrijf");
 			if($conn->connect_error) {die("<p>Connection error: " . $conn->connect_error . "</p>");}
 
 			$stmt = $conn->prepare("SELECT FirstName, LastName, Username FROM tblUsers WHERE UserID = ?");
@@ -124,6 +157,59 @@
 				</script>';
 			}
 			?>
+			<script>
+				// Disable scrolling when service card is active
+				const serviceCards = document.querySelectorAll('.expanded-blog-post');
+
+				function updateBodyScroll(hidden) {
+					console.log(hidden);
+					
+					if (hidden) {
+						document.body.style.overflowY = 'hidden'; // Disable scrolling
+					} else {
+						document.body.style.overflowY = 'auto'; // Enable scrolling
+					}
+				}
+
+				// Monitor changes to classes dynamically (e.g., when toggled by user actions)
+				serviceCards.forEach(card => {
+					card.addEventListener('class-change', updateBodyScroll); // Custom event example
+				});
+				<?php
+					$conn = new mysqli("10.30.199.62", "guest", "guestPassword", "stagebedrijf");
+					if($conn->connect_error) {die("<p>Connection error: " . $conn->connect_error);}
+					$sqlServices = "SELECT PostID FROM tblposts;";
+					$serviceResults = $conn->query($sqlServices);
+					/* Entering data */
+					if ($serviceResults->num_rows > 0) {
+						while ($row = $serviceResults->fetch_assoc()) {
+							echo "
+								const button{$row['PostID']} = document.getElementById('btn{$row['PostID']}');
+								const targetDiv{$row['PostID']} = document.getElementById('ex{$row['PostID']}');
+								const closeButton{$row['PostID']} = document.getElementById('btnClose{$row['PostID']}');
+
+
+								closeButton{$row['PostID']}.addEventListener('click', function() {
+									targetDiv{$row['PostID']}.classList.add('hide');
+									targetDiv{$row['PostID']}.classList.remove('show');
+									updateBodyScroll(false);
+									setTimeout(() => {
+										targetDiv{$row['PostID']}.style.display = 'none';
+									}, 150);
+								});
+								button{$row['PostID']}.addEventListener('click', function() {
+									setTimeout(() => {
+										targetDiv{$row['PostID']}.classList.add('show');
+										targetDiv{$row['PostID']}.classList.remove('hide');
+									}, 10);
+									targetDiv{$row['PostID']}.style.display = 'block';
+									updateBodyScroll(true);
+								});
+							";
+						}
+					}
+				?>
+			</script>
 		</main>
     </body>
 </html>
