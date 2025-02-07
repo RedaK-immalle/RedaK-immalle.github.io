@@ -51,10 +51,10 @@
                         </div>
                         ';
                         /* Confirming login */
-                        $conn = new mysqli("10.30.199.62", "guest", "guestPassword", "stagebedrijf");
+                        $conn = new mysqli("localhost", "guest", "guestPassword", "stagebedrijf");
                         if($conn->connect_error) {die("<p>Connection error: " . $conn->connect_error . "</p>");}
                         if (isset($_POST['submit'])) {
-                            $stmt = $conn->prepare("SELECT UserID, PasswordHash FROM tblUsers WHERE Username = ?");
+                            $stmt = $conn->prepare("SELECT UserID, PasswordHash FROM tblusers WHERE Username = ?");
                             $stmt->bind_param("s", $_POST['username']);
                             $stmt->execute();
                             $sqlResult = $stmt->get_result();
@@ -71,9 +71,9 @@
                     }
                 }
             } else {
-                $conn = new mysqli("10.30.199.62", "guest", "guestPassword", "stagebedrijf");
+                $conn = new mysqli("localhost", "guest", "guestPassword", "stagebedrijf");
                 if($conn->connect_error) {die("<p>Connection error: " . $conn->connect_error . "</p>");}
-                $stmt = $conn->prepare("SELECT * FROM tblUsers WHERE UserID = ?");
+                $stmt = $conn->prepare("SELECT * FROM tblusers WHERE UserID = ?");
                 $stmt->bind_param("s", $_SESSION['user_id']);
                 $stmt->execute();
                 $sqlResult = $stmt->get_result();
@@ -84,11 +84,11 @@
                     header('Location: login.php');
                 } else if(isset($_POST['update'])) {
                     if($_POST['password'] != "") {
-                        $stmt = $conn->prepare("UPDATE tblUsers SET FirstName = ?, LastName = ?, Username = ?, PasswordHash = ?, Email = ? WHERE UserID = ?");
+                        $stmt = $conn->prepare("UPDATE tblusers SET FirstName = ?, LastName = ?, Username = ?, PasswordHash = ?, Email = ? WHERE UserID = ?");
                         $hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
                         $stmt->bind_param("ssssss", $_POST['firstname'], $_POST['lastname'], $_POST['username'], $hash, $_POST['email'], $_SESSION['user_id']);
                     } else {
-                        $stmt = $conn->prepare("UPDATE tblUsers SET FirstName = ?, LastName = ?, Username = ?, Email = ? WHERE UserID = ?");
+                        $stmt = $conn->prepare("UPDATE tblusers SET FirstName = ?, LastName = ?, Username = ?, Email = ? WHERE UserID = ?");
                         $stmt->bind_param("sssss", $_POST['firstname'], $_POST['lastname'], $_POST['username'], $_POST['email'], $_SESSION['user_id']);
                     }
                     $stmt->execute();

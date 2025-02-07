@@ -48,11 +48,11 @@
                 session_start();
             
                 /* Confirming login */
-                $conn = new mysqli("10.30.199.62", "guest", "guestPassword", "stagebedrijf");
+                $conn = new mysqli("localhost", "guest", "guestPassword", "stagebedrijf");
                 if($conn->connect_error) {die("<p>Connection error: " . $conn->connect_error . "</p>");}
 
                 if(isset($_POST['submit']) && isset($_SESSION['user_id'])) {
-                    $sqlQuery = "INSERT INTO tblPosts (UserID, Title, Content, CreatedAt) VALUES (?, ?, ?, NOW())";
+                    $sqlQuery = "INSERT INTO tblposts (UserID, Title, Content, CreatedAt) VALUES (?, ?, ?, NOW())";
                     $stmt = $conn->prepare($sqlQuery);
                     
                     // Bind and sanitize the parameters

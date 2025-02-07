@@ -54,7 +54,7 @@
             </div>
             <?php
                 /* Confirming login */
-                $conn = new mysqli("10.30.199.62", "guest", "guestPassword", "stagebedrijf");
+                $conn = new mysqli("localhost", "guest", "guestPassword", "stagebedrijf");
                 if($conn->connect_error) {die("<p>Connection error: " . $conn->connect_error . "</p>");}
                 if (isset($_POST['submit'])) {
                     $firstName = $_POST['first-name'];
@@ -63,7 +63,7 @@
                     $username = $_POST['username'];
                     $password = $_POST['password'];
 
-                    $sqlQuery = "INSERT INTO tblUsers (FirstName, LastName, Username, PasswordHash, Email, CreatedAt) VALUES (\"".$firstName."\", \"".$lastName."\", \"".$username."\", \"".password_hash($password, PASSWORD_DEFAULT)."\", \"".$email."\", NOW());";
+                    $sqlQuery = "INSERT INTO tblusers (FirstName, LastName, Username, PasswordHash, Email, CreatedAt) VALUES (\"".$firstName."\", \"".$lastName."\", \"".$username."\", \"".password_hash($password, PASSWORD_DEFAULT)."\", \"".$email."\", NOW());";
                     $sqlResult = $conn->query($sqlQuery);
                 }
             ?>

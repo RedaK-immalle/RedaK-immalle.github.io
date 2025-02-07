@@ -32,6 +32,25 @@
 			<img id="background" src="Icons/AlldusBackground.jpg"/>
 			<div id="front-page">
 				<h1 id='hallo-gebruiker'>Hallo {Voornaam},</h1>
+				<h2>Nieuwste Post</h2>
+				<?php
+				$conn = new mysqli("localhost", "guest", "guestPassword", "stagebedrijf");
+				if($conn->connect_error) {die("<p>Connection error: " . $conn->connect_error . "</p>");}
+	
+				$stmt = $conn->prepare("SELECT tblposts.PostID, tblusers.UserID, CONCAT(tblusers.FirstName, ' ', tblusers.LastName) AS FullName, tblposts.Title, tblposts.Content, DATE_FORMAT(tblposts.CreatedAt, '%M %e') AS CreatedAt FROM tblposts LEFT JOIN tblusers ON tblposts.UserID = tblusers.UserID ORDER BY tblposts.CreatedAt DESC LIMIT 1;");
+				$stmt->execute();
+				$sqlResult = $stmt->get_result();
+				$row = $sqlResult->fetch_assoc();
+				
+				echo '
+				<div class="featured-blog-post">
+					<div class="ex-blog-content-holder">
+						<h1 class="ex-blog-title">'.$row['Title'].'</h1>
+						<p class="ex-blog-content">'.$row['Content'].'</p>
+					</div>
+				</div>';
+				?>
+
 			</div>
 			<form method="POST" action="index.php" class="blog-section">
 				<select name="datums" id="blogDatums" onchange="this.form.submit()">
@@ -40,10 +59,10 @@
 					<?php
 					error_reporting(E_ALL);
 					session_start();
-					$conn = new mysqli("10.30.199.62", "guest", "guestPassword", "stagebedrijf");
+					$conn = new mysqli("localhost", "guest", "guestPassword", "stagebedrijf");
 					if($conn->connect_error) {die("<p>Connection error: " . $conn->connect_error . "</p>");}
 					
-					$sql = $conn->prepare("SELECT DISTINCT(DATE_FORMAT(CreatedAt, '%M %e')) AS Date FROM tblPosts ORDER BY DATE_FORMAT(CreatedAt, '%M %e') ASC;");
+					$sql = $conn->prepare("SELECT DISTINCT(DATE_FORMAT(CreatedAt, '%M %e')) AS Date FROM tblposts ORDER BY DATE_FORMAT(CreatedAt, '%M %e') ASC;");
 					$sql->execute();
 					$sqlResult = $sql->get_result();
 					
@@ -65,10 +84,10 @@
 					?>
 				</select>
 			</form>
-
+			
 			<!-- Blog Posts -->
 			<?php
-				$conn = new mysqli("10.30.199.62", "guest", "guestPassword", "stagebedrijf");
+				$conn = new mysqli("localhost", "guest", "guestPassword", "stagebedrijf");
 				if($conn->connect_error) {die("<p>Connection error: " . $conn->connect_error . "</p>");}
 				
 				
@@ -82,9 +101,24 @@
 					$sql->bind_param("s", $_SESSION['datums']);
 				}
 
+				/* Place Comments */
+				if(isset($_POST['placeComment']) && isset($_SESSION['user_id'])) { // Ensure that the user is logged in before inserting new comment //
+					$sqlQuery = "INSERT INTO tblcomments (UserID, PostID, Content, CreatedAt) VALUES (?, ?, ?, NOW())";
+					$stmt = $conn->prepare($sqlQuery);
+					
+					$userId = intval($_SESSION['user_id']);
+					$postId = intval($_POST['hiddenPostID']);
+					$content = htmlspecialchars($_POST['commentText'], ENT_QUOTES, 'UTF-8');
+					
+					$stmt->bind_param("iis", $userId, $postId, $content);									
+					$stmt->execute();
+					$stmt->close();				
+					header("Location: index.php");
+				}
 				
 				$sql->execute();
 				$sqlResult = $sql->get_result();
+				$currentPostID = 0;
 				if($sqlResult->num_rows > 0) {
 					while($row = $sqlResult->fetch_assoc()) {
 						echo'
@@ -96,33 +130,56 @@
 									<td><p class="blog-writer">'.$row['FullName'].'</p></td>
 								</tr>
 								<tr>
-									<td colspan="2"><p class="blog-content">'.$row['Content'].'</p></td>
+								<td colspan="2"><p class="blog-content">'.$row['Content'].'</p></td>
 								</tr>
 								<tr>
 									<td></td>
 									<td><p class="blog-writer">'.$row['CreatedAt'].'</p></td>
-								</tr>
-							</table>
+									</tr>
+									</table>
 						</div>
 						<div class="expanded-blog-post" id="ex'.$row['PostID'].'">
-							<h1 class="ex-blog-title">'.$row['Title'].'</h1>
-							<p class="ex-blog-content">'.$row['Content'].'</p>
-							<h3 class="ex-blog-subtitle">Comments:</h3>
+							<div class="ex-blog-content-holder">
+								<h1 class="ex-blog-title">'.$row['Title'].'</h1>
+								<p class="ex-blog-content">'.$row['Content'].'</p>
+								<h3 class="ex-blog-subtitle">Comments:</h3>
+								<form action="index.php" method="post">
+									<input name="commentText">
+									<input style="display: none;" name="hiddenPostID" value="'.$row['PostID'].'">
+									<button type="submit" name="placeComment">Send</button>
+								</form>
+									';
+								/* Show Comments */
+								$stmt = $conn->prepare("SELECT tblusers.Username, tblcomments.Content, CONCAT(LEFT(MONTHNAME(tblcomments.CreatedAt), 3), ' ', DAY(tblcomments.CreatedAt), ' ', TIME(tblcomments.CreatedAt)) AS CreatedAt FROM tblusers INNER JOIN tblcomments ON tblusers.UserID = tblcomments.UserID WHERE tblcomments.PostID = ?");
+								$stmt->bind_param("s", $row['PostID']);
+								$stmt->execute();
+								$sqlResult2 = $stmt->get_result();
+								if ($sqlResult2->num_rows > 0) {
+									while ($cmtRow = $sqlResult2->fetch_assoc()) {
+										echo '
+										<div class="comment">
+										<div class="comment-header">
+											<h3>'.$cmtRow['Username'].'</h3>
+											<h4>Posted: '.$cmtRow['CreatedAt'].'</h4>
+										</div>
+										<p>'.$cmtRow['Content'].'</p>
+										</div>
+										';
+									}
+								}
+								
+								echo '
+								</div>
+								<!-- Bottom Buttons -->
 
-							<div class="comment">
-								<h3>Reda Kadi</h3>
-								<p>Wa een shitpost</p>
-							</div>
-
-							<!-- Bottom Buttons -->
-							<button class="ex-blog-close-btn" id="btnClose'.$row['PostID'].'"><p>Close</p></button>
-							';
+								<button class="ex-blog-close-btn" id="btnClose'.$row['PostID'].'"><p>Close</p></button>
+								';
 							if($_SESSION['user_id'] == $row['UserID']) {
 								echo '
 								<form action="index.php" method="post">
 											<input type="submit" name="deletePost'.$row['PostID'].'" value="Delete Post" class="ex-blog-delete-post-btn">
 										</form>';
-								if(isset($_POST['deletePost'.$row['PostID']])) {
+										if(isset($_POST['deletePost'.$row['PostID']])) {
 									$query = "DELETE FROM tblposts WHERE PostID = ?";
 									$sql = $conn->prepare($query);
 									$sql->bind_param("s", $row['PostID']);
@@ -140,10 +197,10 @@
 
 			<!-- Customize home screen to logged in user -->
 			<?php
-			$conn = new mysqli("10.30.199.62", "guest", "guestPassword", "stagebedrijf");
+			$conn = new mysqli("localhost", "guest", "guestPassword", "stagebedrijf");
 			if($conn->connect_error) {die("<p>Connection error: " . $conn->connect_error . "</p>");}
 
-			$stmt = $conn->prepare("SELECT FirstName, LastName, Username FROM tblUsers WHERE UserID = ?");
+			$stmt = $conn->prepare("SELECT FirstName, LastName, Username FROM tblusers WHERE UserID = ?");
 			$stmt->bind_param("s", $_SESSION['user_id']);
 			$stmt->execute();
 			$sqlResult = $stmt->get_result();
@@ -151,9 +208,10 @@
 
 
 			if(isset($_SESSION['user_id'])) {
-				echo '<script>
-				let titelTekst = document.getElementById("hallo-gebruiker");
-				titelTekst.innerHTML = "Hallo, '.$row['FirstName'].'";
+				echo '
+				<script>
+					let titelTekst = document.getElementById("hallo-gebruiker");
+					titelTekst.innerHTML = "Hallo, '.$row['FirstName'].'";
 				</script>';
 			}
 			?>
@@ -176,7 +234,7 @@
 					card.addEventListener('class-change', updateBodyScroll); // Custom event example
 				});
 				<?php
-					$conn = new mysqli("10.30.199.62", "guest", "guestPassword", "stagebedrijf");
+					$conn = new mysqli("localhost", "guest", "guestPassword", "stagebedrijf");
 					if($conn->connect_error) {die("<p>Connection error: " . $conn->connect_error);}
 					$sqlServices = "SELECT PostID FROM tblposts;";
 					$serviceResults = $conn->query($sqlServices);

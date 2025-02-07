@@ -24,10 +24,11 @@ body {
   height: 100%;
   display: flex;
   justify-content: center;
-  // background-image: url("Icons/AlldusBackground.jpg");
-  background-size: cover; /* Scales the image to cover the whole background */
-  background-repeat: no-repeat; /* Prevents the image from repeating */
-  background-position: center; /* Centers the image */
+  background-color: #e5e5f7;
+  opacity: 1;
+  background-image:  radial-gradient(#444cf7 1.35px, transparent 1.35px), radial-gradient(#444cf7 1.35px, #e5e5f7 1.35px);
+  background-size: 54px 54px;
+  background-position: 0 0,27px 27px;  z-index: -2;
   overflow-x: hidden;
 }
 
@@ -60,7 +61,7 @@ nav {
     width: 10%;
     height: 40px;
     padding: 10px;
-    background-color: variables.$lightColor;
+    background-color: variables.$mainColor;
     color: white;
     font-weight: bolder;
     font-size: 15px;
@@ -141,6 +142,21 @@ main {
 
   #front-page {
     margin-top: 120px;
+    width: 100%;
+
+    h1 {
+      margin: 0;
+      margin-bottom: 10px;
+      display: inline;
+    }
+
+    h2 {
+      justify-self: center;
+      text-align: center;
+      font-size: 32px;
+      margin: 0;
+      margin-bottom: 20px;
+    }
   }
 
   .new-post-form form {
@@ -209,8 +225,30 @@ main {
       margin: 10px 0;
     }
   }
+
   .blog-post:hover {
     transform: scale(1.01);
+  }
+
+  .featured-blog-post {
+    background: linear-gradient(127deg, variables.$lightColor 10%, variables.$mainColor 40%, variables.$darkMainColor 90%);
+    padding: 10px 20px;
+    border-radius:5px;
+    min-height: 50vh;
+    height: auto;
+
+    h1 {
+      margin: 0;
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin: 0;
+      border: solid 1px black;
+      border-radius:3px;
+      padding:10px;
+       font-style:italic;
+    }
   }
 
   .expanded-blog-post {
@@ -222,10 +260,16 @@ main {
     left: 15vw;    
     top: 15vh;
     overflow-y: scroll;
-    background-color: variables.$lightColor;
+    background: linear-gradient(127deg, variables.$lightColor 10%, variables.$mainColor 40%, variables.$darkMainColor 90%);
     padding: 5px 20px;
     border-radius: 5px;
     flex-direction: column;
+
+    .ex-blog-content-holder {
+      width: 100%;
+      min-height: 85%;
+      margin-bottom: 75px;
+    }
 
     .ex-blog-title {
 
@@ -237,37 +281,79 @@ main {
 
     .ex-blog-content {
       width: 100%;
+      min-height: 50%;
       height: 60%;
       border: solid 1px black;
       border-radius: 3px; 
       padding: 10px;
     }
 
+    form {
+      width: 100%;
+      height: auto;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+
+      input {
+        width: 85%;
+      }
+      button {
+        width: 10%;
+      }
+    }
 
     .ex-blog-close-btn {
       transition: transform 0.15ms ease;
       cursor: pointer;
-      position: absolute;
-      bottom: 0;
-      margin-bottom: 15px;
+      position: fixed;
+      bottom: 15vh;
+      left: 15vw;
+      margin: 0px 0px 10px 10px;
       background-color: variables.$secondaryColor;
       border: 2px solid darkred;
       border-radius: 3px;
       width: 100px;
       line-height: 1;
     }
+
+    .comment {
+      width: 100%;
+      border: solid 1px black;
+      border-radius: 4px; 
+      padding: 5px 10px;
+      background: linear-gradient(to right, variables.$lightColor 10%, variables.$mainColor 30%);
+      margin-bottom: 15px;
+
+      .comment-header {
+        display: flex;
+        justify-content: space-between;
+        h3 {
+          margin: 0px;
+        }
+        h4 {
+          margin: 0px;
+          font-weight: lighter;
+          color: rgb(50,50,50);
+        }
+      }
+      p {
+        margin: 0px;
+      }
+    }
+
     .ex-blog-close-btn:hover {
       background-color: red;
       transform: scale(1.02);
     }
 
     .ex-blog-delete-post-btn {
-      position: absolute;
+      position: fixed;
+      width: auto;
+      bottom: 15vh;
+      right: 15vw;
+      margin: 0px 10px 10px 0px;
       cursor: pointer;
-      bottom: 0;
-      margin-bottom: 15px;
-      right: 0;
-      margin-right: 10px;
       color: red;
       background-color: transparent;
       border: none;
