@@ -1,6 +1,19 @@
 /* Main Color Scheme */
 /* Variables for colors */
 /* Other Variables */
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+@keyframes spin {
+  from {
+    --angle: 0deg;
+  }
+  to {
+    --angle: 360deg;
+  }
+}
 * {
   font-family: "Sarala", serif;
 }
@@ -10,8 +23,6 @@
 }
 
 body, html {
-  /* Hide the overflow at the left or right side of the page */
-  height: 100%;
   margin: 0;
 }
 
@@ -31,6 +42,7 @@ body {
   background-size: 54px 54px;
   background-position: 0 0, 27px 27px;
   z-index: -2;
+  /* Hide the overflow at the left or right side of the page */
   overflow-x: hidden;
 }
 
@@ -119,6 +131,11 @@ main {
   margin-bottom: 100px;
   width: 80vw;
 }
+main #alldus-title {
+  text-align: center;
+  font-size: 42px;
+  margin: 10px 0;
+}
 main #background {
   width: 100vw;
   height: auto;
@@ -156,13 +173,14 @@ main .new-post-form form #inhoud {
   margin-bottom: 10px;
 }
 main .blog-section {
-  position: relative;
+  position: absolute;
   top: 100vh;
 }
-main .blog-post {
+main #blog-post-holder {
+  margin-top: 300px;
+}
+main #blog-post-holder .blog-post {
   transition: transform 0.15s ease;
-  position: relative;
-  top: 100vh;
   margin: 20px auto;
   width: 70%;
   background-color: white;
@@ -172,60 +190,83 @@ main .blog-post {
   display: flex;
   flex-direction: column;
   box-shadow: 3px 5px 0px #B36AB5;
+  position: relative;
 }
-main .blog-post .openBtn {
+main #blog-post-holder .blog-post .openBtn {
   cursor: pointer;
+  position: absolute;
   width: 100%;
   height: 100%;
-  position: absolute;
   left: 0%;
   top: 0%;
   opacity: 0;
 }
-main .blog-post .blog-header {
+main #blog-post-holder .blog-post .blog-header {
   background-color: #b0daff;
   border-radius: 10px;
 }
-main .blog-post .blog-header h2 {
+main #blog-post-holder .blog-post .blog-header h2 {
   color: #0b2b52;
 }
-main .blog-post table {
+main #blog-post-holder .blog-post table {
   width: 100%;
   border-collapse: collapse;
   margin-bottom: 20px;
 }
-main .blog-post .blog-title {
+main #blog-post-holder .blog-post .blog-title {
   margin: 0px;
   margin-left: 5px;
 }
-main .blog-post .blog-writer {
+main #blog-post-holder .blog-post .blog-writer {
   text-align: right;
   margin: 0px;
   margin-right: 5px;
 }
-main .blog-post .blog-content {
+main #blog-post-holder .blog-post .blog-content {
   margin: 10px 0;
+  max-height: 100px;
+  overflow-y: hidden;
 }
 main .blog-post:hover {
   transform: scale(1.01);
 }
-main .featured-blog-post {
-  background: linear-gradient(127deg, #b0daff 10%, #449AD0 40%, #0b2b52 90%);
+main #featured-blog-post {
+  background: linear-gradient(to bottom right, #b0daff 10%, #449AD0 40%, #0b2b52 90%);
   padding: 10px 20px;
   border-radius: 5px;
-  min-height: 50vh;
+  max-height: 60vh;
   height: auto;
+  position: relative;
+  overflow-y: scroll;
 }
-main .featured-blog-post h1 {
+main #featured-blog-post h1 {
   margin: 0;
   margin-bottom: 10px;
 }
-main .featured-blog-post p {
+main #featured-blog-post #content {
   margin: 0;
   border: solid 1px black;
   border-radius: 3px;
   padding: 10px;
+}
+main #featured-blog-post #content p {
   font-style: italic;
+}
+main #featured-blog-post::after, main #featured-blog-post::before {
+  content: "";
+  border-radius: 8px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  z-index: -1;
+  width: 101%;
+  height: 103%;
+  background-image: conic-gradient(from var(--angle), #B36AB5, #449AD0, #B36AB5);
+  animation: 3s spin linear infinite;
+}
+main #featured-blog-post::before {
+  filter: blur(20px);
 }
 main .expanded-blog-post {
   width: 70vw;
@@ -319,6 +360,65 @@ main .expanded-blog-post .ex-blog-delete-post-btn {
   border: none;
   text-decoration: underline;
   font-size: 16px;
+}
+main #alldus-info {
+  width: 100%;
+  min-height: 600px;
+  justify-content: space-around;
+  display: flex;
+}
+main #alldus-info #left-side {
+  float: left;
+  height: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+main #alldus-info #left-side h2 {
+  margin: 0;
+}
+main #alldus-info #left-side h3 {
+  text-align: center;
+  background-image: linear-gradient(to bottom right, #b0daff, #449AD0);
+  border: solid 4px #0b2b52;
+  padding: 1em;
+  border-radius: 10px;
+  margin: 0;
+}
+main #alldus-info #left-side div {
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  z-index: 0;
+  width: 250px;
+  height: 250px;
+}
+main #alldus-info #left-side div img {
+  border-radius: 50%;
+  width: 250px;
+  height: auto;
+}
+main #alldus-info #left-side div::after {
+  content: "";
+  display: flex;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 106%;
+  height: 106%;
+  border-radius: 50%;
+  background-image: conic-gradient(from 0deg, #449AD0, #B36AB5, #449AD0);
+  transform: translate(-50%, -50%);
+  z-index: -1;
+}
+main #alldus-info #right-side {
+  float: right;
+  height: 100%;
+}
+main #alldus-info #right-side iframe {
+  height: 600px;
+  width: 800px;
+  border-radius: 20px;
 }
 
 .account-form {

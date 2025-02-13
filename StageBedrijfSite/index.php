@@ -1,3 +1,9 @@
+<?php
+	/* Start Session to see what user is logged in */
+	error_reporting(E_ALL);
+	session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="nl">
 	<head>
@@ -18,6 +24,7 @@
 			<ul id="main-nav-buttons">
 				<li><a href="./index.php">Home</a></li>
 				<li><a href="./create-post.php">Post</a></li>
+				<li><a href="./stage-info.php">Info</a></li>
 				<li><a href="./login.php">Account</a></li>
 			</ul>
 
@@ -41,14 +48,19 @@
 				$stmt->execute();
 				$sqlResult = $stmt->get_result();
 				$row = $sqlResult->fetch_assoc();
-				
-				echo '
-				<div class="featured-blog-post">
-					<div class="ex-blog-content-holder">
-						<h1 class="ex-blog-title">'.$row['Title'].'</h1>
-						<p class="ex-blog-content">'.$row['Content'].'</p>
-					</div>
-				</div>';
+				if(isset($row)) {
+					echo '
+					<div id="featured-blog-post">
+						<div>
+							<h1>'.$row['Title'].'</h1>
+							<div id="content">
+								'.$row['Content'].'
+							</div>
+						</div>
+					</div>';
+				} else {
+					echo "<h1>Geen posts gevonden</h1>";
+				}
 				?>
 
 			</div>
@@ -57,8 +69,6 @@
 					<option value="all" <?php if(!isset($_SESSION['datums'])) {echo " selected";}?>>All</option>
 					<!-- Distinct dates for all the blogs made -->
 					<?php
-					error_reporting(E_ALL);
-					session_start();
 					$conn = new mysqli("localhost", "guest", "guestPassword", "stagebedrijf");
 					if($conn->connect_error) {die("<p>Connection error: " . $conn->connect_error . "</p>");}
 					
@@ -84,6 +94,7 @@
 					?>
 				</select>
 			</form>
+			<div id="blog-post-holder">
 			
 			<!-- Blog Posts -->
 			<?php
@@ -130,7 +141,7 @@
 									<td><p class="blog-writer">'.$row['FullName'].'</p></td>
 								</tr>
 								<tr>
-								<td colspan="2"><p class="blog-content">'.$row['Content'].'</p></td>
+								<td colspan="2"><div class="blog-content">'.$row['Content'].'</div></td>
 								</tr>
 								<tr>
 									<td></td>
@@ -141,7 +152,7 @@
 						<div class="expanded-blog-post" id="ex'.$row['PostID'].'">
 							<div class="ex-blog-content-holder">
 								<h1 class="ex-blog-title">'.$row['Title'].'</h1>
-								<p class="ex-blog-content">'.$row['Content'].'</p>
+								<div class="ex-blog-content">'.$row['Content'].'</div>
 								<h3 class="ex-blog-subtitle">Comments:</h3>
 								<form action="index.php" method="post">
 									<input name="commentText">
@@ -192,6 +203,7 @@
 				}
 				
 				?>
+				</div>
 
 
 

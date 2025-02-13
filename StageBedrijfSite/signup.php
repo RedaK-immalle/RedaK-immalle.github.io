@@ -16,8 +16,9 @@
 			<a href="index.php" id="logo"><img src="Icons/Alldus-logo.png.webp"></a>
 			<!-- Main Buttons -->
 			<ul id="main-nav-buttons">
-				<li><a href="./index.php">Home</a></li>
+                <li><a href="./index.php">Home</a></li>
 				<li><a href="./create-post.php">Post</a></li>
+				<li><a href="./stage-info.php">Info</a></li>
 				<li><a href="./login.php">Account</a></li>
 			</ul>
 

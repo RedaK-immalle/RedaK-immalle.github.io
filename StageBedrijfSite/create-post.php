@@ -1,3 +1,9 @@
+<?php
+    /* Start Session to see what user is logged in */
+    error_reporting(E_ALL);
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="nl">
     <head>
@@ -16,8 +22,9 @@
 			<a href="index.php" id="logo"><img src="Icons/Alldus-logo.png.webp"></a>
 			<!-- Main Buttons -->
 			<ul id="main-nav-buttons">
-				<li><a href="./index.php">Home</a></li>
+                <li><a href="./index.php">Home</a></li>
 				<li><a href="./create-post.php">Post</a></li>
+				<li><a href="./stage-info.php">Info</a></li>
 				<li><a href="./login.php">Account</a></li>
 			</ul>
 
@@ -42,26 +49,21 @@
                 </form>
             </div>
 
-            <?php
-                /* Start Session to see what user is logged in */
-                error_reporting(E_ALL);
-                session_start();
-            
+            <?php            
                 /* Confirming login */
                 $conn = new mysqli("localhost", "guest", "guestPassword", "stagebedrijf");
                 if($conn->connect_error) {die("<p>Connection error: " . $conn->connect_error . "</p>");}
 
                 if(isset($_POST['submit']) && isset($_SESSION['user_id'])) {
-                    $sqlQuery = "INSERT INTO tblposts (UserID, Title, Content, CreatedAt) VALUES (?, ?, ?, NOW())";
+                    $sqlQuery = "INSERT INTO tblposts (UserID, Title, Content, CreatedAt) VALUES (?, ?, '".$_POST['inhoud']."', NOW())";
                     $stmt = $conn->prepare($sqlQuery);
                     
                     // Bind and sanitize the parameters
                     $userId = intval($_SESSION['user_id']); // Ensure UserID is an integer
                     $title = htmlspecialchars($_POST['titel'], ENT_QUOTES, 'UTF-8'); // Sanitize input to prevent XSS
-                    $content = htmlspecialchars($_POST['inhoud'], ENT_QUOTES, 'UTF-8'); // Sanitize input to prevent XSS
                     
                     // Bind the parameters to the prepared statement
-                    $stmt->bind_param("iss", $userId, $title, $content);
+                    $stmt->bind_param("is", $userId, $title);
                     
                     // Execute the prepared statement
                     $stmt->execute();

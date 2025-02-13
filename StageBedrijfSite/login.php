@@ -1,3 +1,8 @@
+<?php
+    /* Start Session to see what user is logged in */
+    error_reporting(E_ALL);
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="nl">
     <head>
@@ -16,8 +21,9 @@
 			<a href="index.php" id="logo"><img src="Icons/Alldus-logo.png.webp"></a>
 			<!-- Main Buttons -->
 			<ul id="main-nav-buttons">
-				<li><a href="./index.php">Home</a></li>
+                <li><a href="./index.php">Home</a></li>
 				<li><a href="./create-post.php">Post</a></li>
+				<li><a href="./stage-info.php">Info</a></li>
 				<li><a href="./login.php">Account</a></li>
 			</ul>
 
@@ -39,14 +45,14 @@
                 <div class="account-form">
                 <h2>Login</h2>
                 <form method="post">
-                        <label for="username">Username</label>
+                        <label for="username">Gebruikersnaam</label>
                         <input type="text" id="username" name="username" required>
                         
-                        <label for="password">Password</label>
+                        <label for="password">Wachtwoord</label>
                         <input type="password" id="password" name="password" required>
                         
                         <input type="submit" name="submit" value="Login">
-                        <a href="./signup.php">Sign Up</a>
+                        <a href="./signup.php">Maak een account</a>
                         </form>
                         </div>
                         ';
@@ -68,8 +74,10 @@
                             } else {
                                 /* Wrong Login */
                                 header("Location: login.php");
-                    }
-                }
+                            }
+                        }
+                    
+                
             } else {
                 $conn = new mysqli("localhost", "guest", "guestPassword", "stagebedrijf");
                 if($conn->connect_error) {die("<p>Connection error: " . $conn->connect_error . "</p>");}
@@ -97,24 +105,24 @@
                 /* Already logged in screen */
                 echo '
                 <form method="post" class="account-form">
-                <label for="firstname">First Name</label>
+                <label for="firstname">Voornaam</label>
                 <input type="text" id="firstname" name="firstname" value="'.$row['FirstName'].'">
                 
-                    <label for="lastname">Last Name</label>
+                    <label for="lastname">Achternaam</label>
                     <input type="text" id="lastname" name="lastname" value="'.$row['LastName'].'">
 
                     <label for="email">E-mail</label>
                     <input type="text" id="email" name="email" value="'.$row['Email'].'">
                 
-                    <label for="password">Password</label>
+                    <label for="password">Wachtwoord</label>
                     <input type="password" id="password" name="password" value="">
                 
-                    <label for="username">Username</label>
+                    <label for="username">Gebruikersnaam</label>
                     <input type="text" id="username" name="username" value="'.$row['Username'].'">
                     
-                    <button type="submit" name="update">Update Profile</button>
+                    <button type="submit" name="update">Update Profiel</button>
                     <form method="post">
-                        <button type="submit" name="submit">Log Out</button>
+                        <button type="submit" name="submit">Uitloggen</button>
                     </form>
                 </form>
                 ';
