@@ -1,1 +1,672 @@
 
+<!DOCTYPE>
+<html lang="nl"><script src="chrome-extension://mfidniedemcgceagapgdekdbmanojomk/js/elephant.js"></script><head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Sarala:wght@400;700&amp;display=swap" rel="stylesheet">
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stage bedrijf</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+<meta id="ConnectiveDocSignExtentionInstalled" name="ConnectiveDocSignExtentionInstalled" data-extension-version="1.0.7"></head>
+<body style="overflow-y: auto;">
+    <nav>
+        <!-- Main Logo -->
+        <a href="index.php" id="logo"><img src="Icons/Alldus-logo.png.webp"></a>
+        <!-- Main Buttons -->
+        <ul id="main-nav-buttons">
+            <li><a href="./index.php">Home</a></li>
+            <li><a href="./create-post.php">Post</a></li>
+            <li><a href="./stage-info.php">Info</a></li>
+            <li><a href="./login.php">Account</a></li>
+        </ul>
+
+        <!-- Socials -->
+        <ul id="social-nav-buttons">
+            <li><img class="social-nav-img" src="Icons/envelope.png"></li>
+            <li><img class="social-nav-img" src="Icons/phone-call.png"></li>
+            <li><img class="social-nav-img" src="Icons/linkedin.png"></li>
+        </ul>
+    </nav>
+    <main style="margin-top: 0px;">
+        <img id="background" src="Icons/AlldusBackground.jpg">
+        <div id="front-page">
+            <h1 id="hallo-gebruiker">Hallo, Reda</h1>
+            <h2>Nieuwste Post</h2>
+            
+                <div id="featured-blog-post">
+                    <div>
+                        <h1>Verrijkend</h1>
+                        <div id="content">
+                            <!--?php include "verrijkend.php"; ?-->
+                        </div>
+                    </div>
+                </div>
+        </div>
+        <form method="POST" action="index.php" class="blog-section">
+            <select name="datums" id="blogDatums" onchange="this.form.submit()">
+                <option value="all" selected="">All</option>
+                <!-- Distinct dates for all the blogs made -->
+                <option value="February 18">February 18</option>				</select>
+        </form>
+        <div id="blog-post-holder">
+        
+        <!-- Blog Posts -->
+        
+                    <div class="blog-post">
+                        <button class="openBtn" id="btn62"></button>
+                        <table>
+                            <tbody><tr class="blog-header">
+                                <td><h2 class="blog-title">Verrijkend</h2></td>
+                                <td><p class="blog-writer">Reda Kadi</p></td>
+                            </tr>
+                            <tr>
+                            <td colspan="2"><div class="blog-content"><!--?php include "verrijkend.php"; ?--></div></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td><p class="blog-writer">February 18</p></td>
+                                </tr>
+                                </tbody></table>
+                    </div>
+                    <div class="expanded-blog-post hide" id="ex62" style="display: none;">
+                        <div class="ex-blog-content-holder">
+                            <h1 class="ex-blog-title">Verrijkend</h1>
+                            <div class="ex-blog-content" style="overflow-y: scroll;"><h2>Verrijkend</h2>
+                                <p>
+                                
+                                Ik heb tot nu toe al 2 werkdagen gespendeerd in mijn stagebedrijf.<br/>
+                                Wanneer ik het gebouw binnen wandel wordt ik verwelkomt door de secretaresse dat mij vertelt dat ik even op de CEO mag wachten in de wachtruimte.<br/>
+                                Wanneer de CEO aankwam heeft hij mij gebracht naar de refter waar Maxime, Magnificat en ik ons werk voortaan gaan verrichten.<br/>
+                                We zaten samen neer aan tafel met de CEO van Alldus Internation Ltd. en de co-eigenaar van AI Ireland.<br/>
+                                Hij heeft ons uitgelegd wat hij doet en wat hij wil van ons. Maxime en ik hebben de taak gekregen om de voorpagina van https://aiireland.ie/ volledig te herdesignen.<br/>
+                                Hier zijn Maxime en ik nu heel druk mee bezig geweest, ik zal u wat laten zien wat voor designs wij hebben gecreëerd.
+                                
+                                </p>
+                                <style>
+                                .wp-block-columns.alignwide.h-card-wrapper.section-inner {
+                                    width: 100%;
+                                    padding: 0;
+                                    height: auto;
+                                    display: flex;
+                                    justify-content: space-around;
+                                    align-content: space-around;
+                                    flex-wrap: wrap;
+                                    transform-style: preserve-3d;
+                                    position: relative;
+                                    z-index: 1;
+                                }
+                                  
+                                .wp-block-column {
+                                    width: 25%;
+                                    min-height: 200px;
+                                    height: auto;
+                                    margin: 0;
+                                    background-repeat: no-repeat;
+                                    background-size: 100%;
+                                    color: white;
+                                    
+                                    display: flex;
+                                    position: relative;
+                                    justify-content: flex-start;
+                                    align-items: flex-end;
+                                    border-radius: 10px;
+                                    transform-style: preserve-3d;
+                                
+                                    transition: transform 300ms ease-in-out;
+                                }
+                                
+                                .wp-block-column:hover {
+                                    transform: translateY(-10px);
+                                }
+                                
+                                .wp-block-column:hover .h-card-heading {
+                                    transform: translateY(-45px);
+                                }
+                                
+                                .wp-block-column:before { /* Foreground Opacity Change */
+                                    content: '';
+                                    position: absolute;
+                                    width: 100%;
+                                    height: 100%;
+                                    top: 0;
+                                    left: 0;
+                                    background-image: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,.4));
+                                    border-radius: 10px;
+                                    opacity: 0;
+                                    transition: opacity 400ms ease-out;
+                                }
+                                
+                                .wp-block-column:hover:before {
+                                    opacity: 1;
+                                }
+                                
+                                .wp-block-column:after { /* Background Opacity */
+                                    content: '';
+                                    position: absolute;
+                                    width: 100%;
+                                    height: 100%;
+                                    top: 0;
+                                    left: 0;
+                                    background-image: linear-gradient(to bottom, rgba(0,0,0,.5), rgba(0,0,0,.9));
+                                    filter: blur(10px);
+                                    border-radius: 10px;
+                                    transform: translateZ(-1px);
+                                    transition: transform 300ms ease-in-out, margin-top 300ms ease-in-out;
+                                }
+                                
+                                .wp-block-column:hover:after {
+                                    margin-top: 10px;
+                                }
+                                
+                                .wp-block-column .h-card-heading {
+                                    margin: 0;
+                                    display: inline;
+                                
+                                    position: absolute;
+                                    bottom: 20%;
+                                    left: 10%;
+                                    z-index: 2;
+                                    transition: all 400ms ease-in-out;
+                                    font-size: 22px;
+                                }
+                                
+                                .wp-block-column p {
+                                    margin: 0;
+                                    display: inline;
+                                    position: relative;
+                                    z-index: 2;
+                                    transition: all 400ms ease-in-out;
+                                    top: 100%;
+                                }
+                                
+                                .h-card-description {
+                                    margin: 0;
+                                    position: absolute;
+                                    bottom: 15%;
+                                    left: 10%;
+                                    width: 80%;
+                                    height: 20%;
+                                    z-index: 2;
+                                    overflow: hidden;
+                                    transition: top 400ms ease-out;
+                                }
+                                
+                                .wp-block-column:hover .h-card-description p {
+                                    top: 0%;
+                                }
+                                </style>
+                                
+                                <h3>Kaartanimaties</h3>
+                                <p>Hier vindt u mijn kaartanimatie voor op de voorpagina, we moeten hier nog gepaste achtergronden voor zoeken.<br/>Ik heb alle classes en ids aangepast naar de gepaste WordPress tags om ze compatibel te maken met de juiste voorpagina.<br/>De achtergrond blijft in dezelfde positie terwijl de kaart omhoog beweegt, dit is niet mogelijk met gewone CSS code dus moest ik gebruikt maken van pseudo elementen (::after & ::before)</p>
+                                <div class="wp-block-columns alignwide h-card-wrapper section-inner">
+                                    <div style="background-image: url('https://aiireland.ie/wp-content/uploads/2022/02/background-cover.jpg');" class="wp-block-column">
+                                        <h2 class="h-card-heading">
+                                            AI Awards
+                                        </h2>
+                                        <div class="h-card-description">
+                                            <p>
+                                                Celebrating AI innovation in Ireland
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div style="background-image: url('https://aiireland.ie/wp-content/uploads/2022/02/background-cover.jpg');" class="wp-block-column">
+                                        <h2 class="h-card-heading">
+                                            Join the Membership Waiting List
+                                        </h2>
+                                        <div class="h-card-description">
+                                            <p>
+                                                There are many member benefits
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div style="background-image: url('https://aiireland.ie/wp-content/uploads/2022/02/background-cover.jpg');" class="wp-block-column">
+                                        <h2 class="h-card-heading">
+                                            Book an AI Presentation
+                                        </h2>
+                                        <div class="h-card-description">
+                                            <p>
+                                                Explore AI topics across various industries
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <h3>Nieuwe Navigatiebar</h3>
+                                <p>Maxime en ik hebben ook besloten om een nieuwe navigatiebar te designen. Ik heb hiervoor gebruikt gemaakt van pseudo elementen (net zoals de kaartanimaties)<br/>Dit gedeelte is nog niet klaar want in de HTML code zijn er ook nog subfolders die getoond moeten worden als je zweeft over folders in de navigatiebar.</p>
+                                
+                                <style>
+                                #header {
+                                    display: flex;
+                                    flex-direction: row;
+                                    justify-content: center;
+                                    width: 90%  ;
+                                    margin-left: auto;
+                                    margin-right: auto;
+                                    background-color: #1c1c1c;
+                                    padding: 20px;
+                                    border-radius: 15px;
+                                }
+                                
+                                nav {
+                                    width: 100%;
+                                    display: flex;
+                                    justify-content: center;
+                                }
+                                
+                                #nav-logo img {
+                                    width: 70px;
+                                    height: auto;
+                                }
+                                
+                                #base-list {
+                                    display: flex;
+                                    flex-direction: row-reverse;
+                                    align-items: center;
+                                    justify-content: space-evenly;
+                                    list-style-type: none;
+                                    margin: 0;
+                                    padding: 0;
+                                    width: 100%;
+                                }
+                                
+                                #base-list li {
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                }
+                                
+                                #base-list li ul {
+                                    display: none;
+                                }
+                                
+                                a {
+                                    color: white;
+                                    padding: 5px 10px;
+                                    border-radius: 5px;
+                                    text-decoration: none;
+                                    font-weight: bolder;
+                                    text-align: center;
+                                    display: inline;
+                                    font-size: 1vw;
+                                    position: relative;
+                                    overflow: hidden;
+                                    z-index: 1;
+                                    transition: transform 200ms ease-in-out;
+                                }
+                                
+                                a:hover {
+                                    transform: scale(1.05);
+                                }
+                                
+                                #base-list li a{
+                                    z-index: 2;
+                                }
+                                
+                                #base-list li a:after {
+                                    content: '';
+                                
+                                    /* Positioning */
+                                    position: absolute;
+                                    top: 0;
+                                    left: 0;
+                                    translate: -100% 0;
+                                    margin-left: 0px;
+                                
+                                    /* Sizing */
+                                    width: 150%;
+                                    height: 100%;
+                                
+                                    /* Styling */
+                                    background-color: #58A773;
+                                    clip-path: polygon(0 0, 100% 0, 70% 100%, 0 100%);
+                                    z-index: -1;
+                                
+                                    /* Animation */
+                                    transition: translate 350ms ease-out;
+                                }
+                                
+                                #base-list li a:hover:after {
+                                    translate: 0 0;
+                                }
+                                </style>
+                                
+                                <div id="header">
+                                    <div>
+                                        <a href="https://aiireland.ie/" rel="home" id="nav-logo">
+                                            <img src="https://i0.wp.com/aiireland.ie/wp-content/uploads/2023/04/cropped-ai_ireland_logo-6-1.webp?fit=480%2C466&amp;ssl=1" sizes="(max-width: 480px) 100vw, 480px" srcset="https://i0.wp.com/aiireland.ie/wp-content/uploads/2023/04/cropped-ai_ireland_logo-6-1.webp?w=480&amp;ssl=1 480w, https://i0.wp.com/aiireland.ie/wp-content/uploads/2023/04/cropped-ai_ireland_logo-6-1.webp?resize=300%2C291&amp;ssl=1 300w, https://i0.wp.com/aiireland.ie/wp-content/uploads/2023/04/cropped-ai_ireland_logo-6-1.webp?resize=150%2C146&amp;ssl=1 150w, https://i0.wp.com/aiireland.ie/wp-content/uploads/2023/04/cropped-ai_ireland_logo-6-1.webp?resize=50%2C50&amp;ssl=1 50w" alt="AI Ireland" width="480" height="466" data-attachment-id="19666" data-permalink="https://aiireland.ie/cropped-ai_ireland_logo-6-1-webp/" data-orig-file="https://i0.wp.com/aiireland.ie/wp-content/uploads/2023/04/cropped-ai_ireland_logo-6-1.webp?fit=480%2C466&amp;ssl=1" data-orig-size="480,466" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="cropped-ai_ireland_logo-6-1.webp" data-image-description="&lt;p&gt;https://aiireland.ie/wp-content/uploads/2023/04/cropped-ai_ireland_logo-6-1.webp&lt;/p&gt;" data-image-caption="" data-medium-file="https://i0.wp.com/aiireland.ie/wp-content/uploads/2023/04/cropped-ai_ireland_logo-6-1.webp?fit=300%2C291&amp;ssl=1" data-large-file="https://i0.wp.com/aiireland.ie/wp-content/uploads/2023/04/cropped-ai_ireland_logo-6-1.webp?fit=480%2C466&amp;ssl=1" />
+                                        </a>
+                                    </div>
+                                    <nav>
+                                        <ul id="base-list">
+                                            <li>
+                                                <a href="https://aiireland.ie/the-eu-ai-act/">
+                                                    EU AI Act Hub
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://aiireland.ie/2023/10/25/ai-unleashed-navigating-the-ai-revolution-as-a-business-executive/">
+                                                    Books
+                                                </a>
+                                                <ul>
+                                                    <li>
+                                                        <a href="https://www.amazon.com/Unleashed-Navigating-Revolution-Demystifying-Intelligence/dp/B0CK3ZZ2K8/ref=rvi_d_sccl_4/146-6129061-4591063?pd_rd_w=aGPeG&amp;content-id=amzn1.sym.f5690a4d-f2bb-45d9-9d1b-736fee412437&amp;pf_rd_p=f5690a4d-f2bb-45d9-9d1b-736fee412437&amp;pf_rd_r=CTHKWQH1YCZETJHH7R0K&amp;pd_rd_wg=rsNy5&amp;pd_rd_r=96afbfcb-6e77-4ffa-b8e3-be20c742c1de&amp;pd_rd_i=B0CK3ZZ2K8&amp;psc=1">
+                                                            AI Unleashed
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.amazon.com/Unleashed-Essentials-Reference-AI-Driven-Terminology-ebook/dp/B0CVS7DP3R/ref=rvi_d_sccl_3/146-6129061-4591063?pd_rd_w=aGPeG&amp;content-id=amzn1.sym.f5690a4d-f2bb-45d9-9d1b-736fee412437&amp;pf_rd_p=f5690a4d-f2bb-45d9-9d1b-736fee412437&amp;pf_rd_r=CTHKWQH1YCZETJHH7R0K&amp;pd_rd_wg=rsNy5&amp;pd_rd_r=96afbfcb-6e77-4ffa-b8e3-be20c742c1de&amp;pd_rd_i=B0CVS7DP3R&amp;psc=1">
+                                                            AI Unleashed Essentials
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.amazon.com/dp/B0D96N6GHF?ref_=pe_93986420_774957520">
+                                                            AI Unleashed: Healthcare
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.amazon.com/dp/B0D57125BG">
+                                                            Ai in Finance
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <a href="https://aiireland.ie/ai-ireland-training/">
+                                                    AI Training
+                                                </a>
+                                                <ul>
+                                                    <li>
+                                                        <a href="https://aiireland.ie/concise-ai-literacy-for-the-time-strapped-professional/">
+                                                            AI Literacy Training
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://aiireland.ie/navigating-the-new-horizon-the-eu-ai-act-for-ceos/">
+                                                            EU AI Act Workshop
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://aiireland.ie/genai-workshop/">
+                                                            GenAI Workshop
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://aiireland.ie/prompt-engineering/">
+                                                            Prompt Engineering
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://aiireland.ie/ai-marketing-for-beginners-hands-on-workshop-certificate/">
+                                                            AI in Marketing
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://aiireland.ie/ai-training-course-for-hr-professionals/">
+                                                            AI in Human Resources
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://aiireland.ie/ai-in-public-sector/">
+                                                            AI in Public Sector
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://aiireland.ie/ai-training-ai-in-finance/">
+                                                            AI in Finance
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://aiireland.ie/executive-coaching-offered-by-ai-ireland/">
+                                                            Executive Coaching
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <a href="https://aiireland.ie/eu-ai-act-online-course/">
+                                                    Online Courses
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://aiireland.ie/presentation/">
+                                                    Book an AI Presentation
+                                                </a>
+                                                <ul>
+                                                    <li>
+                                                        <a href="https://aiireland.ie/how-to-book-an-ai-ireland-speaker/">
+                                                            Book an AI Ireland Speaker
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://aiireland.ie/booking-an-ai-speaker-for-your-corporate-event-a-complete-guide/">
+                                                            Book an AI Speaker for Your Corporate Event
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://aiireland.ie/personalized-presentation/">
+                                                            Personalized Presentation and Discourse
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://aiireland.ie/keynote/">
+                                                            Keynote Speaking
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://aiireland.ie/keynote-speaking-with-mark-ai-thought-leader-and-visionary/">
+                                                            Keynote Topics
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://aiireland.ie/virtual-keynote/">
+                                                            Virtual Keynote
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://aiireland.ie/roundtable-2/">
+                                                            Roundtable
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://aiireland.ie/automate-your-business/">
+                                                            Business AI &amp; Automation Tools
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://aiireland.ie/success-stories/">
+                                                            Success Stories
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <a href="https://aiireland.ie/ai-awards/">
+                                                    AI Awards
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://aiireland.ie/news/">
+                                                    Blog
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://aiireland.ie/podcast/">
+                                                    Podcast
+                                                </a>
+                                                <ul>
+                                                    <li>
+                                                        <a href="https://aiireland.ie/book-a-podcast/">
+                                                            Book a Podcast
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://aiireland.ie/consumer-goods-in-progress/">
+                                                            Consumer goods
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://aiireland.ie/finance-in-progress/">
+                                                            Finance
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://aiireland.ie/healthcare-in-progress/">
+                                                            Healthcare
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://aiireland.ie/media-remake/">
+                                                            Media
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://aiireland.ie/podcast/sustainability-2/">
+                                                            Sustainability
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://aiireland.ie/podcast/generative-ai/">
+                                                            Generative AI
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://aiireland.ie/podcast/eu-ai-act/">
+                                                            EU AI Act
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://aiireland.ie/government-in-progress/">
+                                                            Government
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://aiireland.ie/security-r/">
+                                                            Security
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://aiireland.ie/transportation-r/">
+                                                            Transportation
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://aiireland.ie/professional-services-r/">
+                                                            Professional Services
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://aiireland.ie/podcast/education/">
+                                                            Education
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://aiireland.ie/others/">
+                                                            Others
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <a href="https://aiireland.ie/our-services/">
+                                                    Services
+                                                </a>
+                                                <ul>
+                                                    <li>
+                                                        <a href="https://aiireland.ie/about/">
+                                                            About Us
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://aiireland.ie/our-services/">
+                                                            Membership
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://aiireland.ie/ai-mastermind/">
+                                                            AI Mastermind
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://aiireland.ie/newsroom/">
+                                                            Newsroom
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>    
+                                
+                                <h3>Werkwijze</h3>
+                                <p>Mark Kelly, de CEO van mijn stagebedrijf heeft ons laten weten dat we kunnen werken met Elementor Pro. Dit is een betalende plugin voor WordPress om designs extra snel te maken voor zijn WordPress website.<br/>Maar toen ik gebruik maakte van dit programma kwam ik er al snel achter dat het helemaal niet goed werkte (gewoon Elementor Pro openen heeft de volledige layout van de front page verpest)<br/>Ik heb hem dit laten weten en hij heeft dan gezegd dat we dit ook op onze manier mochten doen, zolang we het dan implementeren in WordPress. Dit is dus hoe ik te werk ga op mijn stageplek.</p></div>
+                            <h3 class="ex-blog-subtitle">Comments:</h3>
+                            <form action="index.php" method="post">
+                                <input name="commentText">
+                                <input style="display: none;" name="hiddenPostID" value="62">
+                                <button type="submit" name="placeComment">Send</button>
+                            </form>
+                                
+                            </div>
+                            <!-- Bottom Buttons -->
+                            <div class="ex-blog-bottom-buttons">
+                                <button class="ex-blog-close-btn" id="btnClose62"><p>Close</p></button>
+                                
+                                    <form action="index.php" method="post">
+                                        <input type="submit" name="deletePost62" value="Delete Post" class="ex-blog-delete-post-btn">
+                                        <input type="submit" name="editPost62" value="Edit Post" class="ex-blog-edit-post-btn">
+                                    </form></div></div>				</div>
+
+
+
+        <!-- Customize home screen to logged in user -->
+        
+            <script>
+                let titelTekst = document.getElementById("hallo-gebruiker");
+                titelTekst.innerHTML = "Hallo, Reda";
+            </script>			<script>
+            // Disable scrolling when service card is active
+            const serviceCards = document.querySelectorAll('.expanded-blog-post');
+
+            function updateBodyScroll(hidden) {
+                console.log(hidden);
+                
+                if (hidden) {
+                    document.body.style.overflowY = 'hidden'; // Disable scrolling
+                } else {
+                    document.body.style.overflowY = 'auto'; // Enable scrolling
+                }
+            }
+
+            // Monitor changes to classes dynamically (e.g., when toggled by user actions)
+            serviceCards.forEach(card => {
+                card.addEventListener('class-change', updateBodyScroll); // Custom event example
+            });
+            
+                            const button62 = document.getElementById('btn62');
+                            const targetDiv62 = document.getElementById('ex62');
+                            const closeButton62 = document.getElementById('btnClose62');
+
+
+                            closeButton62.addEventListener('click', function() {
+                                targetDiv62.classList.add('hide');
+                                targetDiv62.classList.remove('show');
+                                updateBodyScroll(false);
+                                setTimeout(() => {
+                                    targetDiv62.style.display = 'none';
+                                }, 150);
+                            });
+                            button62.addEventListener('click', function() {
+                                setTimeout(() => {
+                                    targetDiv62.classList.add('show');
+                                    targetDiv62.classList.remove('hide');
+                                }, 10);
+                                targetDiv62.style.display = 'block';
+                                updateBodyScroll(true);
+                            });
+                                    </script>
+    </main>
+
+
+</body></html>
