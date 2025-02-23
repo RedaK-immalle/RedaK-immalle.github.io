@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Specialisatie</title>
+    </head>
+    <body>  
+    <style>
+        * {
+            font-family: "Poppins", sans-serif;
+        }
+        
+        body, html {
+            overflow-x: hidden;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+    
+    <h2>De volgende twee dagen</h2>
+    <p>
+    De paar dagen na mijn eerste post heb ik mij heel hard gefocust op het redesignen van de voorpagina, volledig lokaal op mijn laptop.<br/>
+    Ik heb zoveel tijd gespendeerd in CSS, dat ik het gevoel heb dat ik alles weet van CSS.<br/>
+    Ik heb geleerd over @keyframes, pseudo elementen, welke positioning je wanneer gebruikt.<br/>
+    Ik denk dat ik zowat elk design kan maken in CSS, hoewel ik weet dat er nog veel te leren is.<br/>
+        
+    <br/>Ik zal u mijn designs laten zien waar ik mee bezig ben geweest.<br/>
+    </p>
+    
+    <h2>De podcast sectie</h2>
+    <p>
+    Het vorige design van de podcast sectie vond ik helemaal niet mooi, dus ik wou hier iets speciaal van maken.<br/>
+    Ik heb met behulp van een beetje JavaScript een scroll animatie gemaakt voor de soundwave foto op de achtergrond van deze sectie.<br/>
+    Dit laat de pagina gladder en moderner voelen wat ik veel mooier vind dan het saaie design hiervoor.<br/>
+    </p>
+    
+    <div id="podcast-section">
+        <div id="podcast-section-soundwave"></div>
+        <div id="podcast-left-side">
+            <div id="ai-ireland-podcast-img"></div>
+            <a href="https://aiireland.ie/category/podcast/?customize_changeset_uuid=f753f8ad-9057-45fc-ac7a-b53ede0d727b">
+                 All podcasts
+            </a>
+        </div>
+        <figure id="podcast-right-side">
+            <iframe style="border-radius: 12px; width: 580px; height: 326.25px;" title="Spotify Embed: E185 &amp;apos;Leveraging AI and NLP for Smarter Drug Safety Monitoring&amp;apos; with biologit&amp;apos;s Nicole Baker" src="https://open.spotify.com/embed/show/0BSnufcpLFsqIepZmJN0Pp/video?si=33d1543e0fee47de&amp;utm_source=oembed" width="624" height="351" frameborder="0" allowfullscreen="allowfullscreen" data-origwidth="624" data-origheight="351">
+            </iframe>
+        </figure>
+    </div>
+    <!-- JS For soundwave horizontal scroll -->
+    <script>
+        window.addEventListener("scroll", function () {
+            let scrollPosition = window.scrollY;
+            let soundwave = document.getElementById("podcast-section-soundwave");
+    
+            soundwave.style.backgroundPositionX = `${-scrollPosition * 0.5}px`;
+        });
+    </script>   
+
+    <style>
+    #podcast-section {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        width: 100%;
+        height: 70vh;
+        position: relative;
+        background-color: #111111;
+    }
+    
+    #podcast-section-soundwave {
+        position: absolute;
+        top: 0%;
+        left: 0%;
+        width: 100%;
+        height: 100%;
+        filter: invert(0%) sepia(19%) saturate(62%) hue-rotate(212deg) brightness(96%) contrast(73%);
+        background-image: url("soundwave.png");
+        background-repeat: repeat-x; /* Repeat horizontally */
+        background-position: 100%;
+        background-size: 60%;
+        transition: transform 0.1s ease-out; /* Smooth movement */
+    }
+    
+    #podcast-left-side {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        margin: 0;
+        z-index: 1;
+    }
+    
+    #podcast-left-side a {
+        font-size: 20px;
+        text-decoration: none;
+        color: white;
+        font-weight: bold;
+        font-family: "Poppins",sans-serif;
+        
+        background-color: #95c99d;
+        border: solid 3px #66916c;
+        padding: 10px 15px;
+        border-radius: 10px;
+    
+        transition: transform 200ms ease-in-out;
+    }
+    
+    #podcast-left-side a:hover {
+        transform: scale(1.04);
+    }
+    
+    
+    #ai-ireland-podcast-img {
+        width: 300px;
+        height: 300px;
+        background-image: url("https://i0.wp.com/aiireland.ie/wp-content/uploads/2024/12/Grey-Blue-White-Clean-Cutout-Tech-business-Podcast-Cover.png?w=580&amp;ssl=1");
+        background-repeat: no-repeat;
+        background-size: 100%;
+        position: relative;
+        transform-style: preserve-3d;
+        z-index: 2;
+        /* Cool Effects */
+        border-radius: 15px;
+    }
+    #ai-ireland-podcast-img:after {
+        content: '';
+    
+        width: 105%;
+        height: 105%;
+        position: absolute;
+        background-image: conic-gradient(from 90deg, #A4C2AE, #32ae47, #A4C2AE);
+        top: 50%;
+        left: 50%;
+        border-radius: 20px;
+        transform: translate3d(-50%, -50%, -1px);
+        filter: blur(10px);
+    
+        transition: filter 500ms ease-in-out;
+    }
+    
+    #podcast-left-side:hover #ai-ireland-podcast-img:after {
+        filter: blur(20px);
+    }
+    
+    #podcast-right-side {
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1;
+    }
+    
+    </style>
+    
+    <h2>Partner Loopband</h2>
+    <p>
+    Om de paar uren komt de CEO Mark Kelly eens horen hoe ver we staan met onze taken.<br/>
+    Mark heeft ons de concurrentie laten zien en vroeg of ik hun designs kon maken, de horizontale scrollbar onderaan deze pagina is hier een goed voorbeeld van.<br/>
+    Maxime heeft hier de afbeeldingen voor uitgesneden en dan heb ik hier dit element van gemaakt.<br/>
+    Hiervan komt een van de simpelste maar toch mooiste designs dat ik heb gemaakt op mijn stage, deze lopende band van alle partner logos.<br/>
+    Dit geeft het gevoel dat het bedrijf veel connecties heeft, terwijl de lopende band dit op een mooie manier toont.<br/>
+    </p>
+    
+    <div id="logo-band-container">
+        <div class="logo-band">
+            <img src="PartnerLogos/dublin-city-council.png" alt="dublin-city-council">
+            <img src="PartnerLogos/enterprise-ireland.png" alt="enterprise-ireland">
+            <img src="PartnerLogos/failte-ireland.png" alt="failte-ireland">
+            <img src="PartnerLogos/forvis-mazars.png" alt="forvis-mazars">
+            <img src="PartnerLogos/leo.png" alt="leo">
+            <img src="PartnerLogos/mason-hayes-curran.png" alt="mason-hayes-curran">
+            <img src="PartnerLogos/oracle.png" alt="oracle">
+            <img src="PartnerLogos/pacific-life-re.png" alt="pacific-life-re">
+            <img src="PartnerLogos/skillnet-ireland.png" alt="skillnet-ireland">
+            <img src="PartnerLogos/smart-dublin.png" alt="smart-dublin">
+        </div>    
+        <div class="logo-band">
+            <img src="PartnerLogos/dublin-city-council.png" alt="dublin-city-council">
+            <img src="PartnerLogos/enterprise-ireland.png" alt="enterprise-ireland">
+            <img src="PartnerLogos/failte-ireland.png" alt="failte-ireland">
+            <img src="PartnerLogos/forvis-mazars.png" alt="forvis-mazars">
+            <img src="PartnerLogos/leo.png" alt="leo">
+            <img src="PartnerLogos/mason-hayes-curran.png" alt="mason-hayes-curran">
+            <img src="PartnerLogos/oracle.png" alt="oracle">
+            <img src="PartnerLogos/pacific-life-re.png" alt="pacific-life-re">
+            <img src="PartnerLogos/skillnet-ireland.png" alt="skillnet-ireland">
+            <img src="PartnerLogos/smart-dublin.png" alt="smart-dublin">
+        </div>    
+    </div>
+    
+    <style>
+    #logo-band-container {
+        width: 100vw;
+        height: 100px;
+        overflow-x: hidden;
+        background-color: #222222;
+        display: -webkit-box;
+    }
+    
+    .logo-band {
+        width: 100%; /* Of een vaste breedte, bijv. 800px */
+        height: 100%; /* Aanpassen aan de hoogte van de logo's */
+        display: flex;
+        justify-content: space-between;
+        margin-right: 30px;
+        flex-wrap: nowrap;
+        align-items: center;
+        animation: scroll 20s linear infinite;
+    }
+    
+    .logo-band img {
+        display: flex;
+        align-items: center;
+        width: 100px;
+        height: fit-content;
+        filter: invert(82%) sepia(0%) saturate(0%) hue-rotate(28deg) brightness(93%) contrast(88%);
+    
+    }
+     
+     
+    @keyframes scroll {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-100%); }
+    }
+    
+    </style>
+    
+    <h2>Nieuwe achtergrond</h2>
+    <p>
+    Leesbaarheid van de pagina inhoud is natuurlijk zeer belangrijk, dus wanneer ik de originele voorpagina zag met deze statische achtergrond, was ik nogal teleurgesteld.<br/>
+    </p>
+    <img style="margin: 10px; width: 30vw; height: auto;" src="https://aiireland.ie/wp-content/uploads/2022/02/background-cover.jpg"/>
+    <p>
+    Daarom vroeg ik aan Maxime of hij de highlights video wou pakken van het YouTube kanaal van AI Ireland, hij heeft deze video bewerkt en dan heb ik daar de nieuwe achtergrond van gemaakt.<br/>
+    Dit is een van de grootste aanpassingen aan de site. Niet in het aantal werk dat hierin stak, maar de hoeveelheid verandering de pagina onderging.
+    </p>
+    
+    <h2>De vernieuwde footer</h2>
+    <p>
+    Ik heb de footer ook een nieuw design gegeven met een nettere layout.<br/>
+    Mijn doel was vooral om alles een interactief design te geven. Dus als je zweeft over een van de knoppen, volgt er altijd een mooie animatie.<br/>
+    Met de hulp van Maxime heb ik alle symbooltjes onderaan de footer gekregen, dan heb ik daarvan een hover-animatie gemaakt.
+    </p>
+    
+    <footer>
+        <div id="footer-holder">
+          <form> 
+            <input title="Enter your email" name="email" required="" type="email" placeholder="Enter your email">
+            <button type="submit">Subscribe</button>
+          </form>
+      
+          <div id="links-holder">
+            <div id="footer-services" class="footer-list">
+              <h4>
+                Services
+              </h4>
+              <a href="https://aiireland.ie/our-services/">
+                  Membership
+              </a>
+              <a href="https://aiireland.ie/presentation/">
+                  Speaking &amp; Presentation
+              </a>
+              <a href="https://aiireland.ie/contact/">
+                  Contact Us
+              </a>
+            </div>
+            <div id="footer-resources" class="footer-list">
+              <h4>
+                Resources
+              </h4>
+              <a href="https://aiireland.ie/podcast/">
+                  The AI Ireland Podcast
+              </a>
+              <a href="https://aiireland.ie/news/">
+                  News
+              </a>
+              <a href="https://aiireland.ie/ai-awards/">
+                  AI Awards
+              </a>
+            </div>
+          </div>
+      
+          <div class="social-links">
+            <a id="linked-in" href="https://www.linkedin.com/company/12625750/" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="50" height="50" viewBox="0 0 50 50">
+                    <path
+                        d="M 9 4 C 6.2504839 4 4 6.2504839 4 9 L 4 41 C 4 43.749516 6.2504839 46 9 46 L 41 46 C 43.749516 46 46 43.749516 46 41 L 46 9 C 46 6.2504839 43.749516 4 41 4 L 9 4 z M 9 6 L 41 6 C 42.668484 6 44 7.3315161 44 9 L 44 41 C 44 42.668484 42.668484 44 41 44 L 9 44 C 7.3315161 44 6 42.668484 6 41 L 6 9 C 6 7.3315161 7.3315161 6 9 6 z M 14 11.011719 C 12.904779 11.011719 11.919219 11.339079 11.189453 11.953125 C 10.459687 12.567171 10.011719 13.484511 10.011719 14.466797 C 10.011719 16.333977 11.631285 17.789609 13.691406 17.933594 A 0.98809878 0.98809878 0 0 0 13.695312 17.935547 A 0.98809878 0.98809878 0 0 0 14 17.988281 C 16.27301 17.988281 17.988281 16.396083 17.988281 14.466797 A 0.98809878 0.98809878 0 0 0 17.986328 14.414062 C 17.884577 12.513831 16.190443 11.011719 14 11.011719 z M 14 12.988281 C 15.392231 12.988281 15.94197 13.610038 16.001953 14.492188 C 15.989803 15.348434 15.460091 16.011719 14 16.011719 C 12.614594 16.011719 11.988281 15.302225 11.988281 14.466797 C 11.988281 14.049083 12.140703 13.734298 12.460938 13.464844 C 12.78117 13.19539 13.295221 12.988281 14 12.988281 z M 11 19 A 1.0001 1.0001 0 0 0 10 20 L 10 39 A 1.0001 1.0001 0 0 0 11 40 L 17 40 A 1.0001 1.0001 0 0 0 18 39 L 18 33.134766 L 18 20 A 1.0001 1.0001 0 0 0 17 19 L 11 19 z M 20 19 A 1.0001 1.0001 0 0 0 19 20 L 19 39 A 1.0001 1.0001 0 0 0 20 40 L 26 40 A 1.0001 1.0001 0 0 0 27 39 L 27 29 C 27 28.170333 27.226394 27.345035 27.625 26.804688 C 28.023606 26.264339 28.526466 25.940057 29.482422 25.957031 C 30.468166 25.973981 30.989999 26.311669 31.384766 26.841797 C 31.779532 27.371924 32 28.166667 32 29 L 32 39 A 1.0001 1.0001 0 0 0 33 40 L 39 40 A 1.0001 1.0001 0 0 0 40 39 L 40 28.261719 C 40 25.300181 39.122788 22.95433 37.619141 21.367188 C 36.115493 19.780044 34.024172 19 31.8125 19 C 29.710483 19 28.110853 19.704889 27 20.423828 L 27 20 A 1.0001 1.0001 0 0 0 26 19 L 20 19 z M 12 21 L 16 21 L 16 33.134766 L 16 38 L 12 38 L 12 21 z M 21 21 L 25 21 L 25 22.560547 A 1.0001 1.0001 0 0 0 26.798828 23.162109 C 26.798828 23.162109 28.369194 21 31.8125 21 C 33.565828 21 35.069366 21.582581 36.167969 22.742188 C 37.266572 23.901794 38 25.688257 38 28.261719 L 38 38 L 34 38 L 34 29 C 34 27.833333 33.720468 26.627107 32.990234 25.646484 C 32.260001 24.665862 31.031834 23.983076 29.517578 23.957031 C 27.995534 23.930001 26.747519 24.626988 26.015625 25.619141 C 25.283731 26.611293 25 27.829667 25 29 L 25 38 L 21 38 L 21 21 z">
+                    </path>
+                </svg>
+            </a>
+            <a id="facebook" href="https://www.facebook.com/aiawardsirl/" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="50" height="50" viewBox="0 0 50 50">
+                    <path
+                        d="M 9 4 C 6.2504839 4 4 6.2504839 4 9 L 4 41 C 4 43.749516 6.2504839 46 9 46 L 25.832031 46 A 1.0001 1.0001 0 0 0 26.158203 46 L 31.832031 46 A 1.0001 1.0001 0 0 0 32.158203 46 L 41 46 C 43.749516 46 46 43.749516 46 41 L 46 9 C 46 6.2504839 43.749516 4 41 4 L 9 4 z M 9 6 L 41 6 C 42.668484 6 44 7.3315161 44 9 L 44 41 C 44 42.668484 42.668484 44 41 44 L 33 44 L 33 30 L 36.820312 30 L 38.220703 23 L 33 23 L 33 21 C 33 20.442508 33.05305 20.398929 33.240234 20.277344 C 33.427419 20.155758 34.005822 20 35 20 L 38 20 L 38 14.369141 L 37.429688 14.097656 C 37.429688 14.097656 35.132647 13 32 13 C 29.75 13 27.901588 13.896453 26.71875 15.375 C 25.535912 16.853547 25 18.833333 25 21 L 25 23 L 22 23 L 22 30 L 25 30 L 25 44 L 9 44 C 7.3315161 44 6 42.668484 6 41 L 6 9 C 6 7.3315161 7.3315161 6 9 6 z M 32 15 C 34.079062 15 35.38736 15.458455 36 15.701172 L 36 18 L 35 18 C 33.849178 18 32.926956 18.0952 32.150391 18.599609 C 31.373826 19.104024 31 20.061492 31 21 L 31 25 L 35.779297 25 L 35.179688 28 L 31 28 L 31 44 L 27 44 L 27 28 L 24 28 L 24 25 L 27 25 L 27 21 C 27 19.166667 27.464088 17.646453 28.28125 16.625 C 29.098412 15.603547 30.25 15 32 15 z">
+                    </path>
+                </svg>
+            </a>
+            <a id="instagram"href="https://www.instagram.com/aiawardsirl/" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="50" height="50" viewBox="0 0 50 50">
+                    <path
+                        d="M 16 3 C 8.8324839 3 3 8.8324839 3 16 L 3 34 C 3 41.167516 8.8324839 47 16 47 L 34 47 C 41.167516 47 47 41.167516 47 34 L 47 16 C 47 8.8324839 41.167516 3 34 3 L 16 3 z M 16 5 L 34 5 C 40.086484 5 45 9.9135161 45 16 L 45 34 C 45 40.086484 40.086484 45 34 45 L 16 45 C 9.9135161 45 5 40.086484 5 34 L 5 16 C 5 9.9135161 9.9135161 5 16 5 z M 37 11 A 2 2 0 0 0 35 13 A 2 2 0 0 0 37 15 A 2 2 0 0 0 39 13 A 2 2 0 0 0 37 11 z M 25 14 C 18.936712 14 14 18.936712 14 25 C 14 31.063288 18.936712 36 25 36 C 31.063288 36 36 31.063288 36 25 C 36 18.936712 31.063288 14 25 14 z M 25 16 C 29.982407 16 34 20.017593 34 25 C 34 29.982407 29.982407 34 25 34 C 20.017593 34 16 29.982407 16 25 C 16 20.017593 20.017593 16 25 16 z">
+                    </path>
+                </svg>
+            </a>
+            <a id="twitter" href="https://twitter.com/aiawardsirl" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="50" height="50" viewBox="0 0 50 50">
+                    <path
+                        d="M 11 4 C 7.1456661 4 4 7.1456661 4 11 L 4 39 C 4 42.854334 7.1456661 46 11 46 L 39 46 C 42.854334 46 46 42.854334 46 39 L 46 11 C 46 7.1456661 42.854334 4 39 4 L 11 4 z M 11 6 L 39 6 C 41.773666 6 44 8.2263339 44 11 L 44 39 C 44 41.773666 41.773666 44 39 44 L 11 44 C 8.2263339 44 6 41.773666 6 39 L 6 11 C 6 8.2263339 8.2263339 6 11 6 z M 13.085938 13 L 22.308594 26.103516 L 13 37 L 15.5 37 L 23.4375 27.707031 L 29.976562 37 L 37.914062 37 L 27.789062 22.613281 L 36 13 L 33.5 13 L 26.660156 21.009766 L 21.023438 13 L 13.085938 13 z M 16.914062 15 L 19.978516 15 L 34.085938 35 L 31.021484 35 L 16.914062 15 z">
+                    </path>
+                </svg>
+            </a>
+            <a id="tiktok" href="https://www.tiktok.com/@aiawards_irl?lang=en" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="50" height="50" viewBox="0 0 50 50">
+                    <path
+                        d="M 9 4 C 6.2495759 4 4 6.2495759 4 9 L 4 41 C 4 43.750424 6.2495759 46 9 46 L 41 46 C 43.750424 46 46 43.750424 46 41 L 46 9 C 46 6.2495759 43.750424 4 41 4 L 9 4 z M 9 6 L 41 6 C 42.671576 6 44 7.3284241 44 9 L 44 41 C 44 42.671576 42.671576 44 41 44 L 9 44 C 7.3284241 44 6 42.671576 6 41 L 6 9 C 6 7.3284241 7.3284241 6 9 6 z M 26.042969 10 A 1.0001 1.0001 0 0 0 25.042969 10.998047 C 25.042969 10.998047 25.031984 15.873262 25.021484 20.759766 C 25.016184 23.203017 25.009799 25.64879 25.005859 27.490234 C 25.001922 29.331679 25 30.496833 25 30.59375 C 25 32.409009 23.351421 33.892578 21.472656 33.892578 C 19.608867 33.892578 18.121094 32.402853 18.121094 30.539062 C 18.121094 28.675273 19.608867 27.1875 21.472656 27.1875 C 21.535796 27.1875 21.663054 27.208245 21.880859 27.234375 A 1.0001 1.0001 0 0 0 23 26.240234 L 23 22.039062 A 1.0001 1.0001 0 0 0 22.0625 21.041016 C 21.906673 21.031216 21.710581 21.011719 21.472656 21.011719 C 16.223131 21.011719 11.945313 25.289537 11.945312 30.539062 C 11.945312 35.788589 16.223131 40.066406 21.472656 40.066406 C 26.72204 40.066409 31 35.788588 31 30.539062 L 31 21.490234 C 32.454611 22.653646 34.267517 23.390625 36.269531 23.390625 C 36.542588 23.390625 36.802305 23.374442 37.050781 23.351562 A 1.0001 1.0001 0 0 0 37.958984 22.355469 L 37.958984 17.685547 A 1.0001 1.0001 0 0 0 37.03125 16.6875 C 33.886609 16.461891 31.379838 14.012216 31.052734 10.896484 A 1.0001 1.0001 0 0 0 30.058594 10 L 26.042969 10 z M 27.041016 12 L 29.322266 12 C 30.049047 15.2987 32.626734 17.814404 35.958984 18.445312 L 35.958984 21.310547 C 33.820114 21.201935 31.941489 20.134948 30.835938 18.453125 A 1.0001 1.0001 0 0 0 29 19.003906 L 29 30.539062 C 29 34.707538 25.641273 38.066406 21.472656 38.066406 C 17.304181 38.066406 13.945312 34.707538 13.945312 30.539062 C 13.945312 26.538539 17.066083 23.363182 21 23.107422 L 21 25.283203 C 18.286416 25.535721 16.121094 27.762246 16.121094 30.539062 C 16.121094 33.483274 18.528445 35.892578 21.472656 35.892578 C 24.401892 35.892578 27 33.586491 27 30.59375 C 27 30.64267 27.001859 29.335571 27.005859 27.494141 C 27.009759 25.65271 27.016224 23.20692 27.021484 20.763672 C 27.030884 16.376775 27.039186 12.849206 27.041016 12 z">
+                    </path>
+                </svg> </a>
+            <a id="spotify" href="https://open.spotify.com/show/0BSnufcpLFsqIepZmJN0Pp" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="50" height="50" viewBox="0 0 50 50">
+                    <path
+                        d="M 25 1.9902344 C 12.266865 1.9902344 1.9902344 12.266865 1.9902344 25 C 1.9902344 37.733135 12.266865 48.009766 25 48.009766 C 37.733135 48.009766 48.009766 37.733135 48.009766 25 C 48.009766 12.266865 37.733135 1.9902344 25 1.9902344 z M 25 4.0097656 C 36.650865 4.0097656 45.990234 13.349135 45.990234 25 C 45.990234 36.650865 36.650865 45.990234 25 45.990234 C 13.349135 45.990234 4.0097656 36.650865 4.0097656 25 C 4.0097656 13.349135 13.349135 4.0097656 25 4.0097656 z M 21.933594 14 C 16.000841 14 11.536373 15.027452 11.318359 15.078125 L 11.316406 15.078125 L 11.316406 15.080078 C 9.7155259 15.453865 8.7059511 17.079339 9.078125 18.679688 C 9.450288 20.281477 11.075526 21.288538 12.675781 20.921875 L 12.683594 20.921875 L 12.689453 20.919922 C 12.575843 20.947632 12.739283 20.908042 12.859375 20.882812 C 12.979472 20.857582 13.156783 20.822622 13.386719 20.779297 C 13.846591 20.692637 14.514202 20.576349 15.345703 20.460938 C 17.008724 20.230114 19.325722 20 21.933594 20 L 21.996094 20 C 26.308988 20.0059 32.506391 20.667785 37.480469 23.587891 L 37.482422 23.587891 L 37.482422 23.589844 C 37.954848 23.865283 38.481566 24 38.998047 24 C 40.027098 24 41.03278 23.462606 41.587891 22.517578 C 42.4204 21.099781 41.937951 19.245598 40.519531 18.412109 C 34.27637 14.746763 27.008921 14.007143 22.003906 14 L 21.933594 14 z M 21.933594 16 L 22.003906 16 C 26.808831 16.007 33.751684 16.758455 39.505859 20.136719 C 39.99344 20.42323 40.148772 21.019657 39.863281 21.505859 C 39.672394 21.830832 39.340995 22 38.998047 22 C 38.827923 22 38.658397 21.95814 38.494141 21.863281 L 38.490234 21.861328 C 33.0131 18.647428 26.504103 18.006131 21.998047 18 L 21.933594 18 C 19.208465 18 16.806263 18.239792 15.072266 18.480469 C 14.205267 18.600807 13.504003 18.72047 13.015625 18.8125 C 12.771436 18.85852 12.58045 18.8978 12.447266 18.925781 C 12.322091 18.952081 12.331069 18.948276 12.230469 18.972656 C 11.674724 19.099993 11.153228 18.776774 11.025391 18.226562 C 10.897698 17.677484 11.221452 17.156242 11.769531 17.027344 C 11.921515 16.992022 16.232346 16 21.933594 16 z M 21.992188 22.001953 C 19.485831 22.022933 17.321981 22.257131 15.742188 22.498047 C 14.162394 22.738963 13.265055 22.956785 12.976562 23.039062 C 11.545298 23.4449 10.697078 24.961798 11.103516 26.394531 C 11.511255 27.828702 13.027844 28.672719 14.458984 28.265625 L 14.464844 28.263672 L 14.46875 28.263672 C 14.49469 28.257572 14.53521 28.248108 14.587891 28.236328 C 14.69326 28.212768 14.848723 28.180835 15.048828 28.140625 C 15.449038 28.060205 16.026057 27.951569 16.740234 27.84375 C 18.168588 27.628113 20.142467 27.410079 22.322266 27.390625 C 26.185509 27.356565 30.567753 27.924285 34.84375 30.587891 C 35.289626 30.867749 35.792755 31.001953 36.28125 31.001953 C 37.187002 31.001953 38.077741 30.54265 38.589844 29.722656 C 39.378024 28.458742 38.985326 26.765566 37.720703 25.978516 C 32.336064 22.623808 26.560664 21.964096 21.992188 22.001953 z M 22.009766 24 C 26.371289 23.96386 31.724703 24.598489 36.664062 27.675781 C 37.00944 27.890731 37.108398 28.317977 36.892578 28.664062 C 36.752681 28.88807 36.521498 29.001953 36.28125 29.001953 C 36.149745 29.001953 36.024374 28.968673 35.90625 28.894531 L 35.904297 28.892578 C 31.213033 25.969431 26.380741 25.35469 22.304688 25.390625 C 20.002485 25.411175 17.940802 25.640824 16.441406 25.867188 C 15.691708 25.980369 15.083306 26.093481 14.654297 26.179688 C 14.439792 26.222787 14.270205 26.258358 14.150391 26.285156 C 14.090481 26.298556 14.043261 26.309979 14.007812 26.318359 C 13.972362 26.326759 14.028242 26.308563 13.902344 26.345703 L 13.912109 26.341797 C 13.529249 26.450703 13.137605 26.235485 13.027344 25.847656 C 12.915932 25.454918 13.129707 25.073722 13.521484 24.962891 L 13.523438 24.962891 C 13.511947 24.966191 14.540762 24.703693 16.042969 24.474609 C 17.545141 24.245573 19.619122 24.020016 22.009766 24 z M 22.5 29.001953 C 18.141114 29.002953 14.914292 30.062424 14.708984 30.130859 C 13.409991 30.563124 12.696085 31.994504 13.128906 33.292969 C 13.561895 34.591934 14.993351 35.312698 16.294922 34.871094 L 16.279297 34.876953 C 16.379482 34.844753 16.438799 34.823793 16.742188 34.742188 C 17.045575 34.660578 17.491802 34.551256 18.048828 34.441406 C 19.16288 34.221707 20.724875 34.002431 22.5 34.001953 C 26.836932 34.000989 29.799021 35.039503 32.113281 36.582031 L 32.113281 36.580078 C 32.537053 36.863144 33.023236 37.001953 33.498047 37.001953 C 34.304696 37.001953 35.102812 36.603444 35.580078 35.886719 C 36.338631 34.748062 36.024808 33.181703 34.886719 32.421875 C 31.24152 29.992096 27.140106 28.999891 22.5 29.001953 z M 22.5 31.001953 C 26.859894 31.000053 30.494548 31.897723 33.777344 34.085938 C 34.015629 34.246398 34.075032 34.5406 33.916016 34.779297 C 33.815282 34.930571 33.661397 35.001953 33.498047 35.001953 C 33.400857 35.001953 33.310884 34.976899 33.222656 34.917969 L 33.222656 34.916016 C 30.588916 33.160587 27.163068 32.000917 22.5 32.001953 C 20.561125 32.002475 18.875557 32.239215 17.662109 32.478516 C 17.055386 32.598166 16.565205 32.718405 16.222656 32.810547 C 15.880107 32.902687 15.581784 33.000359 15.667969 32.972656 L 15.660156 32.974609 L 15.652344 32.976562 C 15.385915 33.066963 15.116402 32.933192 15.025391 32.660156 C 14.934381 32.387121 15.069741 32.117683 15.341797 32.027344 C 15.400487 32.007784 18.468886 31.002914 22.5 31.001953 z">
+                    </path>
+                </svg>
+            </a>
+            <a id="apple" href="https://podcasts.apple.com/cz/podcast/ai-ireland-podcast/id1378105318" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" id="podcasts">   <g id="social/logos/podcasts" fill="none" fill-rule="evenodd" stroke="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1">     <path id="line" stroke="#000" d="M11.5,11.5 C12.6045695,11.5 13.5,10.6045695 13.5,9.5 C13.5,8.3954305 12.6045695,7.5 11.5,7.5 C10.3954305,7.5 9.5,8.3954305 9.5,9.5 C9.5,10.6045695 10.3954305,11.5 11.5,11.5 Z M15.3890873,13.8890873 C17.5369709,11.7412037 17.5369709,8.25879631 15.3890873,6.1109127 C13.2412037,3.9630291 9.75879631,3.9630291 7.6109127,6.1109127 C5.4630291,8.25879631 5.4630291,11.7412037 7.6109127,13.8890873 M17.5104076,16.0104076 C20.8298641,12.6909512 20.8298641,7.30904884 17.5104076,3.98959236 C14.1909512,0.67013588 8.80904884,0.67013588 5.48959236,3.98959236 C2.17013588,7.30904884 2.17013588,12.6909512 5.48959236,16.0104076 M10.8271203,13.5016381 L12.1027976,13.5 C12.9312247,13.5 13.6027976,14.1715729 13.6027976,15 C13.6027976,15.0467469 13.6006124,15.0934682 13.596249,15.1400111 L13.0849993,20.5933407 C13.036824,21.1072107 12.6054883,21.5 12.0893651,21.5 L10.9106349,21.5 C10.3945117,21.5 9.963176,21.1072107 9.91500069,20.5933407 L9.40375104,15.1400111 C9.32642506,14.3152007 9.93238091,13.5838746 10.7571913,13.5065487 L10.8271203,13.5016381 Z"></path>   </g> </svg>
+            </a>
+          </div>
+        </div>
+    </footer>
+    
+    
+    <style>
+    body {
+        width: 100vw;
+        height: 100%;
+        margin: 0;
+    }
+    
+    footer * {
+        color: white;
+    }
+    
+    footer {
+        background-color: #111111;
+        width: 100%;
+        padding: 20px 30px;
+        box-sizing: border-box;
+        min-height: 400px;
+        height: 20vh;
+        margin: 0;
+    }
+    
+    #footer-holder {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        width: 70%;
+        height: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    form {
+        display: flex;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    
+    form input {
+        width: 60%;
+        height: auto;
+        padding: 15px;
+        border-radius: 10px;
+        border: none;
+        margin-right: 10px;
+    }
+    
+    form button {
+        padding: 15px;
+        border: none;
+        border-radius: 10px;
+        margin-left: 10px;
+        cursor: pointer;
+        color: black;
+    }
+    
+    footer p {
+        width: 60%;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
+    
+    #links-holder {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .footer-list {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    #footer-services {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+    }
+    #footer-resources {
+        display: flex;
+        flex-direction: column;
+        align-items: end;
+    }
+    
+    .footer-list h4 {
+        font-size: 24px;
+        margin: 0;
+        margin-bottom: 20px;
+    }
+    
+    .footer-list a {
+        text-decoration: none;
+        margin-bottom: 10px;
+        position: relative;
+        width: auto;
+    }
+    .footer-list a:after {
+        content: '';
+    
+        width: 100%;
+        height: 2px;
+        position: absolute;
+        background-color: white;
+        border-radius: 2px;
+        bottom: -5px;
+        left: 0%;
+        transform: scaleX(0);
+        transition: transform 200ms ease-in-out;
+    }
+    .footer-list a:hover:after {
+        transform: scaleX(1);
+    }
+    
+    .social-links {
+        display: flex;
+        width: 50%;
+        margin-left: auto;
+        margin-right: auto;
+        justify-content: space-between;
+    }
+    
+    .social-links a {
+        transition: transform 200ms ease-in-out, filter 200ms ease-in;
+        position: relative;
+        filter: invert(98%) sepia(97%) saturate(0%) hue-rotate(237deg) brightness(106%) contrast(100%);
+    }
+    
+    .social-links a:hover {
+        transform: scale(1.07);
+    }
+    
+    .social-links #linked-in:hover {
+        filter: invert(17%) sepia(64%) saturate(5189%) hue-rotate(197deg) brightness(98%) contrast(101%);
+    }
+    
+    .social-links #facebook:hover {
+        filter: invert(31%) sepia(71%) saturate(5186%) hue-rotate(215deg) brightness(106%) contrast(109%);
+    }
+    
+    .social-links #instagram:hover {
+        filter: invert(20%) sepia(100%) saturate(1262%) hue-rotate(255deg) brightness(103%) contrast(92%);
+    }
+    
+    .social-links #twitter:hover {
+        filter: invert(47%) sepia(23%) saturate(2158%) hue-rotate(165deg) brightness(105%) contrast(97%);
+    }
+    
+    .social-links #tiktok:hover {
+        filter: invert(56%) sepia(26%) saturate(1149%) hue-rotate(231deg) brightness(91%) contrast(94%);
+    }
+    
+    .social-links #spotify:hover {
+        filter: invert(89%) sepia(97%) saturate(3406%) hue-rotate(64deg) brightness(83%) contrast(88%);
+    }
+    
+    .social-links #apple:hover {
+        filter: invert(13%) sepia(91%) saturate(7493%) hue-rotate(287deg) brightness(100%) contrast(84%);
+    }
+    </style>    
+</body>
+</html>
