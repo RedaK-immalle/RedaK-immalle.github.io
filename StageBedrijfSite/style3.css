@@ -1,0 +1,702 @@
+* {
+    font-family: "Poppins",sans-serif;
+
+}
+
+body {
+    overflow-x: hidden;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+}
+
+/* Navigation Bar */
+
+
+#dropdown img {
+    width: 50px;
+    height: auto;
+}
+
+/* Style for the dropdown button */
+.dropbtn {
+    color: white;
+    padding: 5px 15px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    border-radius: 5px;
+    overflow: hidden;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+.dropbtn:after {
+    content: '';
+    
+    /* Positioning */
+    position: absolute;
+    top: 0;
+    left: 0;
+    translate: -100% 0;
+    margin-left: 0px;
+    
+    /* Sizing */
+    width: 150%;
+    height: 100%;
+    
+    /* Styling */
+    background-color: #58A773;
+    clip-path: polygon(0 0, 100% 0, 70% 100%, 0 100%);
+    z-index: -1;
+    
+    /* Animation */
+    transition: translate 350ms ease-out;
+}
+
+.dropbtn:before {
+    content: '';
+
+    position: absolute;
+    top: 100%;
+    left: 0%;
+    width: 60px;
+    height: 30px;
+}
+
+/* Style for the dropdown content */
+#dropdown {
+    position: absolute;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    list-style-type: none;
+    margin: 20px 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    background-image: linear-gradient(to bottom, #111111, #161616);
+    border-radius: 10px;
+    padding: 15px;
+    z-index: 1;
+}
+
+.dropdown-content {
+    display: none; /* Initially hidden */
+    position: absolute;
+    min-width: 160px;
+    border-radius: 0 0 0 5px;
+}
+
+.nav-item {
+    z-index: 2;
+    margin: auto 0;
+}
+
+.nav-item:hover .dropdown-content {
+    display: flex; /* Show on button hover */
+}
+
+.nav-item:hover .dropbtn:after {
+    translate: 0 0;
+}
+
+.sub-menu {  /* Style the sub-menu column */
+    display: flex;
+    padding-top: 5px;
+    flex-direction: column; /* Arrange items in a column */
+    width: 200px; /* Or adjust as needed */
+    overflow: hidden;
+    list-style-type: none;
+}
+
+.sub-item {
+    width: 100%; /* Make sub-items fill the sub-menu width */
+    z-index: 3;
+    background-color: #202020;
+    margin: 2px 0;
+    border-radius: 5px;
+    transition: background-color 150ms ease-in;
+}
+
+.sub-item:hover {
+    background-color: #58A773;
+}
+
+.sub-item:hover .sub-item-details-holder {
+    display: flex; /* Show details on hover */
+    transform-style: preserve-3d;
+}
+
+.sub-item::after {
+    content: '';
+
+    width: 0%;
+    height: 4px;
+    background-color: #98dcb0;
+    position: relative;
+    display: block;
+    border-radius: 5px;
+    transition: width 300ms ease-out;
+}
+.sub-item:hover:after {
+    width: 100%;
+}
+
+.dropdown-content a {
+    color: white;
+    /* background-color: #202020; */
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    transform-style: preserve-3d;
+    transition: background-color 150ms ease-in, color 150ms ease-in;
+}
+
+.dropdown-content a:hover {
+    /* background-color: #A4C2AE; */
+    color: black;
+}
+.sub-item a:hover:last-child {
+    border-radius: 0 0 0 5px;
+}
+
+.sub-item-details {
+    padding: 3px 16px;
+    color: white;
+    box-sizing: border-box;
+    background-color: #202020;
+    width: 99%;
+    height: 100%;
+    border-radius: 5px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    text-align: center;
+}
+
+.sub-item-details-holder {
+    display: none;
+    justify-content: flex-end;
+    min-width: 300px;
+    max-height: 200px;
+    height: 100%;
+    position: absolute;
+    left: 100%;
+    top: 5px;
+}
+
+/* Front Page */
+
+#front-page {
+    position: relative;
+    top: 0%;
+    left: 0%;
+    width: 100vw;
+    height: 100vh;
+}
+#front-page video {
+    width: 100%;
+    height: fit-content;
+    z-index: -1;
+}
+
+/* Video Overlay */
+
+#video-overlay {
+    position: absolute;
+    top: 15%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+}
+
+/* Page Text */
+
+#front-page-text {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+#front-page-text * {
+    color: white;
+    position: relative;
+    transform-style: preserve-3d;
+}
+#front-page-text *:after {
+    content: '';
+
+    width: 100%;
+    height: 120%;
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+    background-color: rgba(0,0,0,.7);
+    filter: blur(20px);
+    transform: translate3d(-50%, -50%, -1px);
+}
+
+#front-page-text h2 {
+    width: 90%;
+}
+#front-page-text p {
+    width: 60%;
+    line-height: 2;
+}
+
+/* New cards animation */
+
+.wp-block-columns.alignwide.h-card-wrapper.section-inner {
+    width: 80%;
+    padding: 0;
+    margin: 50px auto;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    align-content: space-around;
+    flex-wrap: wrap;
+    transform-style: preserve-3d;
+    position: relative;
+    z-index: 1;
+}
+  
+.wp-block-column {
+    width: 30%;
+    min-height: 200px;
+    height: auto;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center;
+    color: white;
+    
+    display: flex;
+    position: relative;
+    justify-content: flex-start;
+    align-items: flex-end;
+    border-radius: 10px;
+    transform-style: preserve-3d;
+    background-position-y: 40%;
+    transition: transform 300ms ease-in-out, background-size 600ms ease-in-out, background-position 300ms ease-in-out;
+}
+
+.wp-block-column:hover {
+    transform: translateY(-10px);
+    background-size: 120%;
+    background-position: calc(center + 10px);
+}
+
+.wp-block-column:hover .h-card-heading {
+    transform: translateY(-45px);
+}
+
+.wp-block-column:before { /* Foreground Opacity Change */
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-image: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,.8));
+    border-radius: 10px;
+    opacity: 0;
+    transition: opacity 400ms ease-out;
+}
+
+.wp-block-column:hover:before {
+    opacity: 1;
+}
+
+.wp-block-column:after { /* Background Opacity */
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-image: linear-gradient(to bottom, rgba(0,0,0,.5), rgba(0,0,0,.9));
+    filter: blur(10px);
+    border-radius: 10px;
+    transform: translateZ(-1px);
+    transition: transform 300ms ease-in-out, margin-top 300ms ease-in-out;
+}
+
+.wp-block-column:hover:after {
+    margin-top: 10px;
+}
+
+.wp-block-column .h-card-heading {
+    margin: 0;
+    display: inline;
+
+    position: absolute;
+    bottom: 20%;
+    left: 10%;
+    z-index: 2;
+    transition: all 400ms ease-in-out;
+    font-size: 22px;
+}
+
+.wp-block-column p {
+    margin: 0;
+    display: inline;
+    position: relative;
+    z-index: 2;
+    transition: all 400ms ease-in-out;
+    top: 100%;
+}
+
+.h-card-description {
+    margin: 0;
+    position: absolute;
+    bottom: 15%;
+    left: 10%;
+    width: 80%;
+    height: 20%;
+    z-index: 2;
+    overflow: hidden;
+    transition: top 400ms ease-out;
+}
+
+.wp-block-column:hover .h-card-description p {
+    top: 0%;
+}
+
+/* AI-Powered Innovation */
+
+#ai-innov-section {
+    width: 100vw;
+    height: 500px;
+    overflow: hidden;
+    position: relative
+}
+#ai-innov-section img {
+    width: 100vw;
+    height: auto;
+    transform: translateY(-250px);
+    z-index: -1;
+    filter: brightness(50%);
+}
+
+#ai-innov-links-holder {
+    position: absolute;
+    width: 100%;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+}
+
+#ai-innov-links-holder h2 a {
+    color: white;
+    text-decoration: none;
+    font-size: 42px;
+}
+#ai-innov-links-holder a {
+    color: rgb(52, 174, 52);
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Podcast */
+
+#podcast-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+    height: 70vh;
+    position: relative;
+    background-color: #111111;
+}
+
+#podcast-section-soundwave {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    filter: invert(0%) sepia(19%) saturate(62%) hue-rotate(212deg) brightness(96%) contrast(73%);
+    background-image: url("soundwave.png");
+    background-repeat: repeat-x; /* Repeat horizontally */
+    background-position: 100%;
+    background-size: 60%;
+    transition: transform 0.1s ease-out; /* Smooth movement */
+}
+
+#podcast-left-side {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 0;
+    z-index: 1;
+}
+
+#podcast-left-side a {
+    font-size: 20px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-family: "Poppins",sans-serif;
+    
+    background-color: #95c99d;
+    border: solid 3px #66916c;
+    padding: 10px 15px;
+    border-radius: 10px;
+
+    transition: transform 200ms ease-in-out;
+}
+
+#podcast-left-side a:hover {
+    transform: scale(1.04);
+}
+
+
+#ai-ireland-podcast-img {
+    width: 300px;
+    height: 300px;
+    background-image: url("https://i0.wp.com/aiireland.ie/wp-content/uploads/2024/12/Grey-Blue-White-Clean-Cutout-Tech-business-Podcast-Cover.png?w=580&amp;ssl=1");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    z-index: 2;
+    /* Cool Effects */
+    border-radius: 15px;
+}
+#ai-ireland-podcast-img:after {
+    content: '';
+
+    width: 105%;
+    height: 105%;
+    position: absolute;
+    background-image: conic-gradient(from 90deg, #A4C2AE, #32ae47, #A4C2AE);
+    top: 50%;
+    left: 50%;
+    border-radius: 20px;
+    transform: translate3d(-50%, -50%, -1px);
+    filter: blur(10px);
+
+    transition: filter 500ms ease-in-out;
+}
+
+#podcast-left-side:hover #ai-ireland-podcast-img:after {
+    filter: blur(20px);
+}
+
+#podcast-right-side {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+/* Logo Carousel */
+
+#logo-band-container {
+    width: 100vw;
+    height: 100px;
+    overflow-x: hidden;
+    background-color: #222222;
+    display: -webkit-box;
+}
+
+.logo-band {
+    width: 100%; /* Of een vaste breedte, bijv. 800px */
+    height: 100%; /* Aanpassen aan de hoogte van de logo's */
+    display: flex;
+    justify-content: space-between;
+    margin-right: 30px;
+    flex-wrap: nowrap;
+    align-items: center;
+    animation: scroll 20s linear infinite;
+}
+
+.logo-band img {
+    display: flex;
+    align-items: center;
+    width: 100px;
+    height: fit-content;
+    filter: invert(82%) sepia(0%) saturate(0%) hue-rotate(28deg) brightness(93%) contrast(88%);
+
+}
+ 
+ 
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+}
+
+/* Footer */
+
+* {
+    font-family: "Poppins",sans-serif;
+    color: white;
+}
+
+body {
+    width: 100vw;
+    height: 100%;
+    margin: 0;
+}
+
+footer {
+    background-color: #111111;
+    width: 100%;
+    padding: 20px 30px;
+    box-sizing: border-box;
+    min-height: 400px;
+    height: 20vh;
+    margin: 0;
+}
+
+#footer-holder {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 70%;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+form {
+    display: flex;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+form input {
+    width: 60%;
+    height: auto;
+    padding: 15px;
+    border-radius: 10px;
+    border: none;
+    margin-right: 10px;
+}
+
+form button {
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    margin-left: 10px;
+    cursor: pointer;
+    color: black;
+}
+
+footer p {
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+#links-holder {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.footer-list {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+#footer-services {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+#footer-resources {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+}
+
+.footer-list h4 {
+    font-size: 24px;
+    margin: 0;
+    margin-bottom: 20px;
+}
+
+.footer-list a {
+    text-decoration: none;
+    margin-bottom: 10px;
+    position: relative;
+    width: auto;
+}
+.footer-list a:after {
+    content: '';
+
+    width: 100%;
+    height: 2px;
+    position: absolute;
+    background-color: white;
+    border-radius: 2px;
+    bottom: -5px;
+    left: 0%;
+    transform: scaleX(0);
+    transition: transform 200ms ease-in-out;
+}
+.footer-list a:hover:after {
+    transform: scaleX(1);
+}
+
+.social-links {
+    display: flex;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: space-between;
+}
+
+.social-links a {
+    transition: transform 200ms ease-in-out, filter 200ms ease-in;
+    position: relative;
+    filter: invert(98%) sepia(97%) saturate(0%) hue-rotate(237deg) brightness(106%) contrast(100%);
+}
+
+.social-links a:hover {
+    transform: scale(1.07);
+}
+
+.social-links #linked-in:hover {
+    filter: invert(17%) sepia(64%) saturate(5189%) hue-rotate(197deg) brightness(98%) contrast(101%);
+}
+
+.social-links #facebook:hover {
+    filter: invert(31%) sepia(71%) saturate(5186%) hue-rotate(215deg) brightness(106%) contrast(109%);
+}
+
+.social-links #instagram:hover {
+    filter: invert(20%) sepia(100%) saturate(1262%) hue-rotate(255deg) brightness(103%) contrast(92%);
+}
+
+.social-links #twitter:hover {
+    filter: invert(47%) sepia(23%) saturate(2158%) hue-rotate(165deg) brightness(105%) contrast(97%);
+}
+
+.social-links #tiktok:hover {
+    filter: invert(56%) sepia(26%) saturate(1149%) hue-rotate(231deg) brightness(91%) contrast(94%);
+}
+
+.social-links #spotify:hover {
+    filter: invert(89%) sepia(97%) saturate(3406%) hue-rotate(64deg) brightness(83%) contrast(88%);
+}
+
+.social-links #apple:hover {
+    filter: invert(13%) sepia(91%) saturate(7493%) hue-rotate(287deg) brightness(100%) contrast(84%);
+}
