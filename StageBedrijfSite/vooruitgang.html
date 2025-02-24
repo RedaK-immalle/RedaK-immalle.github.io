@@ -1,0 +1,176 @@
+<h2>Vooruitgang</h2>
+<p>
+Vorige vrijdag en deze maandag waren vrij traag in progressie.<br/>
+Ik ben vooral bezig geweest met mijn lokale designs over te zetten op WordPress zodat het publiek gepost kan worden.<br/>
+Ik moet ook nog heel veel tijd spenderen aan het responsief maken van mijn designs.<br/>
+Tot nu toe is Mark Kelly wel blij met het werk dat ik verricht, ook al had ik meer van mezelf verwacht.<br/>
+Ik vind mezelf ook vrij veel overuren doen op mijn kamer omdat ik het gevoel heb dat ik meer zou kunnen doen.<br/>
+Nadat ik thuis kom na mijn shift, ga ik zitten voor mijn bureau om mijn designs af te werken, terwijl ik op mijn stageplek begin aan nieuwe designs.<br/>
+Mark geeft ons ook best veel vrijheid om te werken wanneer en waar dat we willen, dus ik zou elke dag van thuis kunnen werken.<br/>
+De enige reden waarom ik naar mijn werk ga, is zodat ik Maxime een paar taken kan geven omdat hij anders niet weet wat anders te doen,<br/>
+en zodat ik kan praten met Mark Kelly om te zien wat hij nog verwacht op zijn pagina. Tot nu toe is mijn ervaring op mijn stageplek nog steeds positief,<br/>
+hoewel ik soms toch wel ongeduldig wordt van WordPress. Dat programma kan heel vaak tegenwerken, ik moet namelijk het werk van andere professionele web designers<br/>
+omvormen om er mijn eigen designs in te zetten. Maar de code van mijn voorgangers is heel goed verstopt en ik kan het heel moeilijk vinden door WordPress.<br/>
+Ik weet dat Mark hier vrij weinig aan kan doen, maar het kost mij veel tijd door de oude code te zoeken en te vervangen door mijn eigen.<br/>
+Met dat gezegd te hebben, hier zijn de designs waar ik aan heb gewerkt.<br/><br/>
+</p>
+
+<h2>Blogs</h2>
+<p>
+De voorpagina op <a href="https://aiireland.ie/">AI Ireland</a> is uitgerust met blog posts, deze vond ik er maar heel basic uitzien.<br/>
+Dus kwam ik met het idee om dit design volledig opnieuw te doen met een mooie animatie als je over een blog zweeft <em>(nog niet responsief)</em><br/>
+</p>
+
+<div id="blog-container">
+    <h2 class="blog-title">Latest Blog Posts</h2>
+    <div class="blog-list">
+        <div class="blog-card">
+            <div class="blog-card-img-container">
+                <div style="background-image: url('https://aiireland.ie/wp-content/uploads/2025/02/Blog-Photos-AI-Irl-1-5.png')" class="blog-card-img"></div>
+            </div>
+            <div class="blog-text">
+                <h3>The Future of AI</h3>
+                <p>How AI will shape our world in 2050.</p>
+                <span class="blog-date">Feb 24, 2025</span>
+            </div>
+        </div>
+        <div class="blog-card">
+            <div class="blog-card-img-container">
+                <div style="background-image: url('https://aiireland.ie/wp-content/uploads/2025/02/Untitled-1-of-1-scaled-1.avif')" class="blog-card-img"></div>
+            </div>
+            <div class="blog-text">
+                <h3>Cybersecurity in 2030</h3>
+                <p>New challenges and solutions for digital safety.</p>
+                <span class="blog-date">Feb 22, 2025</span>
+            </div>
+        </div>
+        <div class="blog-card">
+            <div class="blog-card-img-container">
+                <div style="background-image: url('https://i0.wp.com/aiireland.ie/wp-content/uploads/2025/02/Blog-Photos-AI-Irl-8.png?resize=1200%2C900&ssl=1')" class="blog-card-img"></div>
+            </div>
+            <div class="blog-text">
+                <h3>Quantum Computing Explained</h3>
+                <p>Understanding the next big leap in computing.</p>
+                <span class="blog-date">Feb 20, 2025</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#blog-container * {
+    color: white;
+    font-family: "Poppins", sans-serif;
+}
+
+#blog-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #333333;
+    padding: 20px 0;
+}
+ 
+.blog-title {
+    font-size: 2rem;
+    color: white;
+    border-bottom: 4px solid white;
+    padding-bottom: 10px;
+    text-align: center;
+}
+ 
+.blog-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: 20px 0 40px 0;
+    width: 100%;
+}
+ 
+.blog-card {
+    width: 30%;
+    height: 400px;
+    background: #222222;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(100, 100, 100, 0.1);
+    position: relative;
+}
+.blog-card:after {
+    content: '';
+
+    width: 100%;
+    height: 100%;
+
+    background-color: black;
+    opacity: 0;
+    position: absolute;
+    z-index: 1;
+    top: 0%;
+    left: 0%;
+    transition: opacity 400ms ease-in;
+}
+.blog-card:hover:after {
+    opacity: 0.5;
+}
+
+.blog-card-img-container {
+    width: 100%;
+    height: 100%;
+}
+.blog-card-img {
+    width: 100%;
+    height: 50%;
+    background-position: center;
+    background-size: cover;
+    transition: height 500ms ease-in-out;
+}
+
+.blog-card:hover .blog-card-img {
+    height: 100%;
+}
+
+.blog-text {
+    width: 100%;
+    height: 25%;
+    position: absolute;
+    bottom: 15%;
+    left: 0%;
+    box-sizing: border-box;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    z-index: 2;
+    transition: height 300ms ease-in-out, bottom 300ms ease-in-out, transform 300ms ease-in-out;
+}
+
+.blog-card:hover .blog-text {
+    height: 35%;
+    bottom: 50%;
+    transform: translateY(50%);
+}
+
+.blog-text * {
+    margin: 0;
+    position: relative;
+    transition: all 300ms ease-in-out;
+    left: 0%;
+}
+
+.blog-card:hover .blog-text * {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+</style>
