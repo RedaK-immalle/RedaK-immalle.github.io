@@ -3,7 +3,7 @@
 <html lang="nl"><script src="chrome-extension://mfidniedemcgceagapgdekdbmanojomk/js/elephant.js"></script><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="preconnect" href="https://fonts.googleapis.com/">
 		<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
-		<link href="./css/style.css" rel="stylesheet">
+		<link href="./index_files/css2" rel="stylesheet">
 		
         
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,10 +16,10 @@
 			<a href="http://46.253.167.15:47200/index.php" id="logo"><img src="./index_files/Alldus-logo.png.webp"></a>
 			<!-- Main Buttons -->
 			<ul id="main-nav-buttons">
-				<li><a href="http://46.253.167.15:47200/index.php">Home</a></li>
-				<li><a href="http://46.253.167.15:47200/create-post.php">Post</a></li>
-				<li><a href="http://46.253.167.15:47200/stage-info.php">Info</a></li>
-				<li><a href="http://46.253.167.15:47200/login.php">Account</a></li>
+				<li><a href="https://redak-immalle.github.io/StageBedrijfSite/index.html">Home</a></li>
+				<li><a href="https://redak-immalle.github.io/StageBedrijfSite/create-post.html">Post</a></li>
+				<li><a href="https://redak-immalle.github.io/StageBedrijfSite/stage-info.html">Info</a></li>
+				<li><a href="https://redak-immalle.github.io/StageBedrijfSite/login.html">Account</a></li>
 			</ul>
 
 			<!-- Socials -->
@@ -37,9 +37,9 @@
 				
 					<div id="featured-blog-post">
 						<div>
-							<h1>Specialisatie</h1>
+							<h1>Vooruitgang</h1>
 							<div id="content">
-							<a href="http://46.253.167.15:47200/specialisatie.html">specialisatie.html</a>
+							<a href="https://redak-immalle.github.io/StageBedrijfSite/vooruitgang.html">vooruitgang.html</a>
 							</div>
 						</div>
 					</div>
@@ -48,12 +48,47 @@
 				<select name="datums" id="blogDatums" onchange="this.form.submit()">
 					<option value="all" selected="">All</option>
 					<!-- Distinct dates for all the blogs made -->
-					<option value="February 18">February 18</option><option value="February 23">February 23</option>				</select>
+					<option value="February 18">February 18</option><option value="February 23">February 23</option><option value="February 24">February 24</option>				</select>
 			</form>
 			<div id="blog-post-holder">
 			
 			<!-- Blog Posts -->
 			
+						<div class="blog-post">
+							<button class="openBtn" id="btn64"></button>
+							<table>
+								<tbody><tr class="blog-header">
+									<td><h2 class="blog-title">Vooruitgang</h2></td>
+									<td><p class="blog-writer">Reda Kadi</p></td>
+								</tr>
+								<tr>
+								<td colspan="2"><div class="blog-content">
+								<a href="https://redak-immalle.github.io/StageBedrijfSite/vooruitgang.html">vooruitgang.html</a>
+								</div></td>
+								</tr>
+								<tr>
+									<td></td>
+									<td><p class="blog-writer">February 24</p></td>
+									</tr>
+									</tbody></table>
+						</div>
+						<div class="expanded-blog-post" id="ex64">
+							<div class="ex-blog-content-holder">
+								<h1 class="ex-blog-title">Vooruitgang</h1>
+								<div class="ex-blog-content">
+								<a href="https://redak-immalle.github.io/StageBedrijfSite/vooruitgang.html">vooruitgang.html</a>
+								</div>
+								<h3 class="ex-blog-subtitle">Comments:</h3>
+								<form action="http://46.253.167.15:47200/index.php" method="post">
+									<input name="commentText">
+									<input style="display: none;" name="hiddenPostID" value="64">
+									<button type="submit" name="placeComment">Send</button>
+								</form>
+								</div>
+								<!-- Bottom Buttons -->
+								<div class="ex-blog-bottom-buttons">
+									<button class="ex-blog-close-btn" id="btnClose64"><p>Close</p></button>
+									</div></div>
 						<div class="blog-post">
 							<button class="openBtn" id="btn63"></button>
 							<table>
@@ -114,7 +149,7 @@
 								<a href="https://redak-immalle.github.io/StageBedrijfSite/verrijkend.html">verrijkend.html</a>
 								</div>
 								<h3 class="ex-blog-subtitle">Comments:</h3>
-								<form action="https://redak-immalle.github.io/StageBedrijfSite/index.php" method="post">
+								<form action="http://46.253.167.15:47200/index.php" method="post">
 									<input name="commentText">
 									<input style="display: none;" name="hiddenPostID" value="62">
 									<button type="submit" name="placeComment">Send</button>
@@ -188,6 +223,28 @@
 										targetDiv63.classList.remove('hide');
 									}, 10);
 									targetDiv63.style.display = 'block';
+									updateBodyScroll(true);
+								});
+							
+								const button64 = document.getElementById('btn64');
+								const targetDiv64 = document.getElementById('ex64');
+								const closeButton64 = document.getElementById('btnClose64');
+
+
+								closeButton64.addEventListener('click', function() {
+									targetDiv64.classList.add('hide');
+									targetDiv64.classList.remove('show');
+									updateBodyScroll(false);
+									setTimeout(() => {
+										targetDiv64.style.display = 'none';
+									}, 150);
+								});
+								button64.addEventListener('click', function() {
+									setTimeout(() => {
+										targetDiv64.classList.add('show');
+										targetDiv64.classList.remove('hide');
+									}, 10);
+									targetDiv64.style.display = 'block';
 									updateBodyScroll(true);
 								});
 										</script>
