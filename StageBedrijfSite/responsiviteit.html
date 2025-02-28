@@ -1,0 +1,156 @@
+<h2>Responsiviteit</h2>
+<p>
+Dinsdag en woensdag heb ik een nieuwe sectie gemaakt dat het YouTube kanaal laat zien aan de sitebezoekers.
+Ik ben ook begonnen met het responsief maken van de voorpagina, dit is de taak waar ik het minste zin in had omdat dit geen leuk jobje is.
+Maar wanneer ik begon kwam ik erachter dat deze taak makkelijker was dan gedacht.
+Hieronder vindt u mijn ontwerp van de nieuwe sectie.
+</p>
+
+<div id="container">
+    <div id="text">
+        <h2>AI Ireland Talks and Webinars</h2>
+        <p>
+            Check out lots more of AI Ireland content on our <a style="color: #58A773;" target="_blank" href="https://www.youtube.com/@aiawardsirl">YouTube channel</a>. Subscribe us there to stay updated, and
+            browse through our AI Awards ceremonies, nominees, talks and webinars
+        </p>
+    </div>
+    <div id="masked-video">
+        <h1>AI Ireland</h1>
+        <video id="yt-video" style="pointer-events: none;" autoplay="autoplay" playsinline loop="loop" muted="muted">
+            <source src="https://videos.files.wordpress.com/6XG1g7sj/youtube-section-video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+</div>
+<style>
+body, html {
+    margin: 0;
+    padding: 0;
+}
+
+@media(min-width: 1024px) {
+    #container {
+        flex-direction: row-reverse;
+    }
+    
+    #yt-video {
+        width: 35vw !important;
+    }
+    
+    #text {
+        max-width: 40%;
+    }
+}
+
+@media (max-width: 1024px) {
+    #container {
+        flex-direction: row-reverse;
+    }
+    
+    #yt-video {
+        width: 40vw !important;
+    }
+
+}
+
+@media (max-width: 768px) {
+    #container {
+        flex-direction: column-reverse;
+        
+        gap: 10vh;
+    }
+    
+    #yt-video {
+        width: 60vw !important;
+    }
+    
+    #text {
+        max-width: 80vw;
+    }
+
+}
+
+@media (max-width: 460px) {
+    #container {
+        flex-direction: column-reverse;
+        gap: 5vh;
+    }
+    
+    #yt-video {
+        width: 80vw !important;
+    }
+    
+    #text {
+        max-width: 90%;
+    }
+}
+
+
+#container {
+    width: 100vw;
+    margin: 0 auto;
+    margin-bottom: 20px !important;
+    min-height: 40vh;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background:
+    linear-gradient(135deg, #1e1e1e, #3a3a3a);
+    padding: 30px 0;
+}
+
+#text {
+    width: auto;
+    height: 80%;
+    background: rgba(255, 255, 255, 0.1);
+    border-left: 5px solid #58A773;
+    border-radius: 10px;
+    padding: 25px;
+    font-family: 'Arial', sans-serif;
+    font-size: 1.2rem;
+    line-height: 1.7;
+    color: #fff;
+    box-shadow: 5px 5px 0px #111111;
+    transform: translate(-5px, -5px);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+#text:hover {
+    transform: translate(0px, 0px);
+    box-shadow: 0px 0px 0px #111111;
+}
+
+#yt-video {
+    height: auto;
+    mask-image: url("https://aiireland.ie/wp-content/uploads/2025/02/AI-logo.png");
+    mask-repeat: no-repeat;
+    mask-size:contain;
+    mask-position: center;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0, 255, 127, 0.4);
+    transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+}
+
+#yt-video:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(0, 255, 127, 0.8);
+}
+
+
+#masked-video h1 {
+    color: #58A773;
+    margin: 20px 0 0 0;
+    font-size: 62px;
+}
+#masked-video {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+}
+</style>
+
+<p>
+We zijn woensdag ook naar Forty Foot gegaan in Dublin om te gaan zwemmen in de zee, wat niet al te prettig was.
+Het duurde niet lang voor iedereen terug het water uit wou.
+</p>
