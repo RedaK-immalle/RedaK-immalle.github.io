@@ -37,9 +37,9 @@
 				
 					<div id="featured-blog-post">
 						<div>
-							<h1>Vooruitgang</h1>
+							<h1>Afsluiting</h1>
 							<div id="content">
-							<a href="https://redak-immalle.github.io/StageBedrijfSite/vooruitgang.html">vooruitgang.html</a>
+							<a href="https://redak-immalle.github.io/StageBedrijfSite/afsluiting.html">afsluiting.html</a>
 							</div>
 						</div>
 					</div>
@@ -48,12 +48,82 @@
 				<select name="datums" id="blogDatums" onchange="this.form.submit()">
 					<option value="all" selected="">All</option>
 					<!-- Distinct dates for all the blogs made -->
-					<option value="February 18">February 18</option><option value="February 23">February 23</option><option value="February 24">February 24</option>				</select>
+					<option value="February 18">February 18</option><option value="February 23">February 23</option><option value="February 24">February 24</option><option value="February 28">February 28</option>				</select>
 			</form>
 			<div id="blog-post-holder">
 			
 			<!-- Blog Posts -->
 			
+						<div class="blog-post">
+							<button class="openBtn" id="btn66"></button>
+							<table>
+								<tbody><tr class="blog-header">
+									<td><h2 class="blog-title">Afsluiting</h2></td>
+									<td><p class="blog-writer">Reda Kadi</p></td>
+								</tr>
+								<tr>
+								<td colspan="2"><div class="blog-content">
+								<a href="https://redak-immalle.github.io/StageBedrijfSite/afsluiting.html">afsluiting.html</a>
+								</div></td>
+								</tr>
+								<tr>
+									<td></td>
+									<td><p class="blog-writer">February 28</p></td>
+									</tr>
+									</tbody></table>
+						</div>
+						<div class="expanded-blog-post" id="ex66">
+							<div class="ex-blog-content-holder">
+								<h1 class="ex-blog-title">Afsluiting</h1>
+								<div class="ex-blog-content">
+								<a href="https://redak-immalle.github.io/StageBedrijfSite/afsluiting.html">afsluiting.html</a>
+								</div>
+								<h3 class="ex-blog-subtitle">Comments:</h3>
+								<form action="http://46.253.167.15:47200/index.php" method="post">
+									<input name="commentText">
+									<input style="display: none;" name="hiddenPostID" value="66">
+									<button type="submit" name="placeComment">Send</button>
+								</form>
+								</div>
+								<!-- Bottom Buttons -->
+								<div class="ex-blog-bottom-buttons">
+									<button class="ex-blog-close-btn" id="btnClose66"><p>Close</p></button>
+									</div></div>
+						<div class="blog-post">
+							<button class="openBtn" id="btn65"></button>
+							<table>
+								<tbody><tr class="blog-header">
+									<td><h2 class="blog-title">Responsiviteit</h2></td>
+									<td><p class="blog-writer">Reda Kadi</p></td>
+								</tr>
+								<tr>
+								<td colspan="2"><div class="blog-content">
+								<a href="https://redak-immalle.github.io/StageBedrijfSite/responsiviteit.html">responsiviteit.html</a>
+								</div></td>
+								</tr>
+								<tr>
+									<td></td>
+									<td><p class="blog-writer">February 28</p></td>
+									</tr>
+									</tbody></table>
+						</div>
+						<div class="expanded-blog-post" id="ex65">
+							<div class="ex-blog-content-holder">
+								<h1 class="ex-blog-title">Responsiviteit</h1>
+								<div class="ex-blog-content">
+								<a href="https://redak-immalle.github.io/StageBedrijfSite/responsiviteit.html">responsiviteit.html</a>
+								</div>
+								<h3 class="ex-blog-subtitle">Comments:</h3>
+								<form action="http://46.253.167.15:47200/index.php" method="post">
+									<input name="commentText">
+									<input style="display: none;" name="hiddenPostID" value="65">
+									<button type="submit" name="placeComment">Send</button>
+								</form>
+								</div>
+								<!-- Bottom Buttons -->
+								<div class="ex-blog-bottom-buttons">
+									<button class="ex-blog-close-btn" id="btnClose65"><p>Close</p></button>
+									</div></div>
 						<div class="blog-post">
 							<button class="openBtn" id="btn64"></button>
 							<table>
@@ -245,6 +315,50 @@
 										targetDiv64.classList.remove('hide');
 									}, 10);
 									targetDiv64.style.display = 'block';
+									updateBodyScroll(true);
+								});
+							
+								const button65 = document.getElementById('btn65');
+								const targetDiv65 = document.getElementById('ex65');
+								const closeButton65 = document.getElementById('btnClose65');
+
+
+								closeButton65.addEventListener('click', function() {
+									targetDiv65.classList.add('hide');
+									targetDiv65.classList.remove('show');
+									updateBodyScroll(false);
+									setTimeout(() => {
+										targetDiv65.style.display = 'none';
+									}, 150);
+								});
+								button65.addEventListener('click', function() {
+									setTimeout(() => {
+										targetDiv65.classList.add('show');
+										targetDiv65.classList.remove('hide');
+									}, 10);
+									targetDiv65.style.display = 'block';
+									updateBodyScroll(true);
+								});
+							
+								const button66 = document.getElementById('btn66');
+								const targetDiv66 = document.getElementById('ex66');
+								const closeButton66 = document.getElementById('btnClose66');
+
+
+								closeButton66.addEventListener('click', function() {
+									targetDiv66.classList.add('hide');
+									targetDiv66.classList.remove('show');
+									updateBodyScroll(false);
+									setTimeout(() => {
+										targetDiv66.style.display = 'none';
+									}, 150);
+								});
+								button66.addEventListener('click', function() {
+									setTimeout(() => {
+										targetDiv66.classList.add('show');
+										targetDiv66.classList.remove('hide');
+									}, 10);
+									targetDiv66.style.display = 'block';
 									updateBodyScroll(true);
 								});
 										</script>
